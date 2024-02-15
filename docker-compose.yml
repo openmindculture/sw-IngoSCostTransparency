@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  shop:
+  shopware:
     container_name: shop
     image: dockware/dev:latest
     ports:

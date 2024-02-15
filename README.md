@@ -23,7 +23,7 @@ Thanks to [dasistweb](https://www.dasistweb.de/), the Docker-based [dockware](ht
 
 ### Enter the Container Shell
 
-- `docker exec -it shop bash`
+- `docker exec -it shopware bash`
 
 You will start in the Shopware project root `/var/www/html` where you can type console commands like
 `bin/console plugin:create foobar`
