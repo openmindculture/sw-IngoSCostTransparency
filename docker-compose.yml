@@ -2,7 +2,7 @@ version: "3"
 
 services:
   shopware:
-    container_name: shop
+    container_name: shopware
     image: dockware/dev:latest
     ports:
       - "22:22"     # ssh

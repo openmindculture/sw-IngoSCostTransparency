@@ -11,7 +11,7 @@
   "minimum-stability": "RC",
   "autoload": {
     "psr-4": {
-      "IngoSDemoTogetherTheme\\": "src/"
+      "IngoSCostTransparency\\": "src/"
     }
   },
   "extra": {
@@ -29,8 +29,8 @@
       "de-DE": "https://www.ingo-steinke.de/\""
     },
     "supportLink": {
-      "en-GB": "https://www.ingo-steinke.de/\"",
-      "de-DE": "https://www.ingo-steinke.de/\""
+      "en-GB": "https://www.ingo-steinke.de/",
+      "de-DE": "https://www.ingo-steinke.de/"
     }
   },
   "authors": [
@@ -39,5 +39,10 @@
       "role": "Manufacturer",
       "homepage": "https://www.ingo-steinke.de/"
     }
-  ]
+  ],
+  "config": {
+    "allow-plugins": {
+      "symfony/runtime": true
+    }
+  }
 }
