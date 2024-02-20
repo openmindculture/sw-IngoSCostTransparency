@@ -1,0 +1,70 @@
+/** additional cost-transparency information */
+
+.ingos-info .icon.icon-info {
+  margin-right: 1rem;
+}
+
+.ingos-cost {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0.5rem;
+
+  @media (max-width: 1188px) {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .ingos-cost-group {
+    position: static;
+    cursor: pointer;
+
+    .ingos-cost-group-bar {
+      background-color: silver;
+    }
+
+    &:nth-child(5n) .ingos-cost-group-bar {
+      background-color: greenyellow;
+    }
+
+    &:nth-child(5n-1) .ingos-cost-group-bar {
+      background-color: hotpink;
+    }
+
+    &:nth-child(5n-2) .ingos-cost-group-bar {
+      background-color: dodgerblue;
+    }
+
+    &:nth-child(5n-3) .ingos-cost-group-bar {
+      background-color: salmon;
+    }
+
+    &:nth-child(5n-4) .ingos-cost-group-bar {
+      background-color: yellow;
+    }
+
+    @media (max-width: 1188px) {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .ingos-cost-group-bar {
+      height: 3rem;
+      border-radius: 0.25rem;
+      box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
+
+      @media (max-width: 1188px) {
+        flex-grow: 1;
+        width: 100%;
+      }
+    }
+
+    &.ingos-active > .ingos-cost-group-bar {
+      box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.5);
+    }
+
+  }
+}
+

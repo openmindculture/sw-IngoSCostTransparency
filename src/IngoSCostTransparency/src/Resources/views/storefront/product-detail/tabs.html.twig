@@ -1,0 +1,52 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
+
+{% block page_product_detail_tabs_inner %}{{  parent() }}{% endblock %}
+
+{% block page_product_detail_tabs_content_description %}
+  {{  parent() }}
+    <!-- INSERTED content from src/Resources/views/storefront/page/product-detail/tabs.html.twig -->
+    <h3>{{ 'ingos.costTransparency' | trans }}</h3>
+    <p class="ingos-info">{% sw_icon 'info' %} {{ 'ingos.percentageToManufacturer' | trans({'%percentage%': 3}) }}</p>
+    <style>
+        #ingos-cost-group-production {
+            width: 45%; /* TODO use dynamic values */
+        }
+        #ingos-cost-group-logistics {
+            width: 40%;
+        }
+        #ingos-cost-group-fulfilment {
+            width: 15%;
+        }
+    </style>
+    <div class="ingos-cost">
+        <!-- TODO use a dynamic loop -->
+        <!-- TODO replace legacy onclick handler by addEventListener when the content has loaded -->
+        <div
+                class="ingos-cost-group ingos-active"
+                id="ingos-cost-group-production" title="Produktion"
+        >
+            <div class="ingos-cost-group-bar animate__animated animate__pulse"></div>
+            <div class="ingos-cost-group-label">
+                <p class="ingos-cost-group-label-title">Produktion<!-- TODO localize --></p>
+                <p class="ingos-cost-group-label-share">45%</p>
+            </div>
+        </div>
+
+        <div class="ingos-cost-group" id="ingos-cost-group-logistics" title="Logistik">
+            <div class="ingos-cost-group-bar"></div>
+            <div class="ingos-cost-group-label">
+                <p class="ingos-cost-group-label-title">Logistik</p>
+                <p class="ingos-cost-group-label-share">40%</p>
+            </div>
+        </div>
+
+        <div class="ingos-cost-group" id="ingos-cost-group-fulfilment" title="Fulfilment">
+            <div class="ingos-cost-group-bar"></div>
+            <div class="ingos-cost-group-label">
+                <p class="ingos-cost-group-label-title">Fulfilment</p>
+                <p class="ingos-cost-group-label-share">15%</p>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
