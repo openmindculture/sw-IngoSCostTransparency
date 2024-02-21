@@ -21,8 +21,8 @@
       "en-GB": "IngoSCostTransparency"
     },
     "description": {
-      "en-GB": "Ingo's Cost Transparency is a free and open-source extension for Shopware 6 that adds optional additional product details as custom fields with responsive and accessible graphic percentage display on the product details.",
-      "de-DE": "Ingo's Cost Transparency ist eine kostenlose Open-Source-Extension für Shopware 6, die optionale zusätzliche Produktdetails zur Preistransparenz auf responsive und barrierefreie Weise auf der Produktdetailseite anzeigt."
+      "en-GB": "Ingo's Cost Transparency adds optional additional product details as custom fields with responsive and accessible graphic percentage display on the product details.",
+      "de-DE": "Ingo's Cost Transparency zeigt optionale zusätzliche Produktdetails zur Preistransparenz auf responsive und barrierefreie Weise auf der Produktdetailseite an."
     },
     "manufacturerLink": {
       "en-GB": "https://www.ingo-steinke.de/\"",

@@ -31,10 +31,26 @@ You will start in the Shopware project root `/var/www/html` where you can type c
 `bin/console plugin:create foobar`
 to create a new plugin structure.
 
+### Install Symfony Profiler
+
+Install development tools, if they are not already pre-installed, like the Symfony Profiler:
+
+`composer require --dev symfony/profiler-pack`
+
+### Ensure File Permissions
+
+New or copied content might not have the required permissions yet.
+We might need to grant them expicitly by a command like
+
+`sudo chmod -R ugo+rw src` (outside the container) or
+
+`chmod -R ugo+rw custom/plugins`
+
 #### Useful Console Commands
 
 - `bin/console cache:clear`
-- `bin/console theme:refresh`
+- `bin/console plugin:refresh`
+- `bin/console theme:compile`
 
 #### Optional Verbose vs. Silent Switches
 
