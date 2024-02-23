@@ -1,6 +1,13 @@
 {
   "ingos": {
-    "costTransparency": "Kostentransparenz",
-    "percentageToManufacturer": "%percentage% % gehen direkt an die Hersteller:innen"
+    "costTransparency": {
+      "costTransparency": "Kostentransparenz",
+      "percentageToManufacturer": "%percentage% % gehen direkt an die Hersteller:innen",
+      "costFactorLabel01": "Kostenfaktor 1",
+      "costFactorLabel02": "Kostenfaktor 2",
+      "costFactorLabel03": "Kostenfaktor 3",
+      "costFactorLabel04": "Kostenfaktor 4",
+      "costFactorLabel05": "Kostenfaktor 5"
+    }
   }
 }

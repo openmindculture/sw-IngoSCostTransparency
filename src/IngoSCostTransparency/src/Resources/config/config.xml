@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Cost Factors</title>
+        <title lang="de-DE">Kostenfaktoren</title>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorLabel01</name>
+            <label>cost factor 1</label>
+            <label lang="de-DE">Kostenfaktor 1</label>
+            <snippet>ingos.costTransparency.costFactorLabel01</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorLabel02</name>
+            <label>cost factor 2</label>
+            <label lang="de-DE">Kostenfaktor 2</label>
+            <snippet>ingos.costTransparency.costFactorLabel02</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorLabel03</name>
+            <label>cost factor 3</label>
+            <label lang="de-DE">Kostenfaktor 3</label>
+            <snippet>ingos.costTransparency.costFactorLabel03</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorLabel04</name>
+            <label>cost factor 4</label>
+            <label lang="de-DE">Kostenfaktor 4</label>
+            <snippet>ingos.costTransparency.costFactorLabel04</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorLabel05</name>
+            <label>cost factor 5</label>
+            <label lang="de-DE">Kostenfaktor 5</label>
+            <snippet>ingos.costTransparency.costFactorLabel05</snippet>
+        </component>
+    </card>
+</config>
