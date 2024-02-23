@@ -24,23 +24,23 @@
     }
 
     &:nth-child(5n) .ingos-cost-group-bar {
-      background-color: greenyellow;
+      background-color: #eebd57;
     }
 
     &:nth-child(5n-1) .ingos-cost-group-bar {
-      background-color: hotpink;
+      background-color: #e44a74;
     }
 
     &:nth-child(5n-2) .ingos-cost-group-bar {
-      background-color: dodgerblue;
+      background-color: #45b571;
     }
 
     &:nth-child(5n-3) .ingos-cost-group-bar {
-      background-color: salmon;
+      background-color: #3b9df9;
     }
 
     &:nth-child(5n-4) .ingos-cost-group-bar {
-      background-color: yellow;
+      background-color: #f5e04d;
     }
 
     @media (max-width: 1188px) {

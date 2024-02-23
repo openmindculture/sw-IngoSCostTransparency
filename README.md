@@ -21,6 +21,11 @@ Future/premium plugin options:
 - add per-product cost factors/labels
 - select adjustment methods to improve low value readability
 
+### Custom Fields and Localizable Snippets
+
+- value: integer `product.costTransparencyPercentage01`
+- label: string snippet `ingos.costTransparency.costFactorLabel01`
+
 ## Development
 
 ### Dockware Development Environment
