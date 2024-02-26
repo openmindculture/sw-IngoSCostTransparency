@@ -43,6 +43,7 @@ container repository anymore! `custom/plugins` is now mounted to the project `sr
 
 - http://localhost/
 - http://localhost/admin (default credentials: admin:shopware)
+- http://localhost//adminer.php (Server: 127.0.0.1, not localhost; database: shopware, root:root)
 
 ### Enter the Container Shell
 
