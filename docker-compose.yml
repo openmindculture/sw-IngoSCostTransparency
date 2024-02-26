@@ -18,6 +18,7 @@ services:
       - web
     environment:
       - XDEBUG_ENABLED=0
+      - XDEBUG_REMOTE_HOST=172.17.0.1
 
 volumes:
   src:
