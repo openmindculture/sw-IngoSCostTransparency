@@ -7,8 +7,8 @@
 <!-- page_product_detail_tabs_content_description -->
   {{  parent() }}
     <!-- INSERTED content from src/Resources/views/storefront/page/product-detail/tabs.html.twig -->
-    <h3>{{ 'ingos.costTransparency' | trans }}</h3>
-    <p class="ingos-info">{% sw_icon 'info' %} {{ 'ingos.percentageToManufacturer' | trans({'%percentage%': 3}) }}</p>
+    <h3>{{ 'ingos.costTransparency.costTransparency' | trans }}</h3>
+    <p class="ingos-info">{% sw_icon 'info' %} {{ 'ingos.costTransparency.percentageToManufacturer' | trans({'%percentage%': 3}) }}</p>
     <style>
         #ingos-cost-group-production {
             width: 45%; /* TODO use dynamic values */
@@ -21,34 +21,78 @@
         }
     </style>
     <div class="ingos-cost">
+
         <!-- TODO use a dynamic loop -->
         <!-- TODO replace legacy onclick handler by addEventListener when the content has loaded -->
-        <div
-                class="ingos-cost-group ingos-active"
-                id="ingos-cost-group-production" title="Produktion"
-        >
-            <div class="ingos-cost-group-bar animate__animated animate__pulse"></div>
-            <div class="ingos-cost-group-label">
-                <p class="ingos-cost-group-label-title">Produktion<!-- TODO localize --></p>
-                <p class="ingos-cost-group-label-share">45%</p>
+        {% if page.product.customFields.ingos_cost_transparency_percentage_01|length > 0 %}
+            <div
+                    class="ingos-cost-group ingos-cost-group-01 ingos-active"
+                    id="ingos-cost-group-01"
+                    title="{{ "ingos.costTransparency.costFactorLabel01"|trans|sw_sanitize }}"
+            >
+                <div class="ingos-cost-group-bar animate__animated animate__pulse"></div>
+                <div class="ingos-cost-group-label">
+                    <p class="ingos-cost-group-label-title">{{ "ingos.costTransparency.costFactorLabel01"|trans|sw_sanitize }}</p>
+                    <p class="ingos-cost-group-label-share">{{ page.product.customFields.ingos_cost_transparency_percentage_01 }}%</p>
+                </div>
             </div>
-        </div>
+        {% endif %}
 
-        <div class="ingos-cost-group" id="ingos-cost-group-logistics" title="Logistik">
-            <div class="ingos-cost-group-bar"></div>
-            <div class="ingos-cost-group-label">
-                <p class="ingos-cost-group-label-title">Logistik</p>
-                <p class="ingos-cost-group-label-share">40%</p>
+        {% if page.product.customFields.ingos_cost_transparency_percentage_02|length > 0 %}
+            <div
+                    class="ingos-cost-group ingos-cost-group-02"
+                    id="ingos-cost-group-02"
+                    title="{{ "ingos.costTransparency.costFactorLabel02"|trans|sw_sanitize }}"
+            >
+                <div class="ingos-cost-group-bar"></div>
+                <div class="ingos-cost-group-label">
+                    <p class="ingos-cost-group-label-title">{{ "ingos.costTransparency.costFactorLabel02"|trans|sw_sanitize }}</p>
+                    <p class="ingos-cost-group-label-share">{{ page.product.customFields.ingos_cost_transparency_percentage_02 }}%</p>
+                </div>
             </div>
-        </div>
+        {% endif %}
 
-        <div class="ingos-cost-group" id="ingos-cost-group-fulfilment" title="Fulfilment">
-            <div class="ingos-cost-group-bar"></div>
-            <div class="ingos-cost-group-label">
-                <p class="ingos-cost-group-label-title">Fulfilment</p>
-                <p class="ingos-cost-group-label-share">15%</p>
+        {% if page.product.customFields.ingos_cost_transparency_percentage_03|length > 0 %}
+            <div
+                    class="ingos-cost-group ingos-cost-group-03"
+                    id="ingos-cost-group-03"
+                    title="{{ "ingos.costTransparency.costFactorLabel033"|trans|sw_sanitize }}"
+            >
+                <div class="ingos-cost-group-bar"></div>
+                <div class="ingos-cost-group-label">
+                    <p class="ingos-cost-group-label-title">{{ "ingos.costTransparency.costFactorLabel03"|trans|sw_sanitize }}</p>
+                    <p class="ingos-cost-group-label-share">{{ page.product.customFields.ingos_cost_transparency_percentage_03 }}%</p>
+                </div>
             </div>
-        </div>
+        {% endif %}
+
+        {% if page.product.customFields.ingos_cost_transparency_percentage_04|length > 0 %}
+            <div
+                    class="ingos-cost-group ingos-cost-group-04"
+                    id="ingos-cost-group-04"
+                    title="{{ "ingos.costTransparency.costFactorLabel04"|trans|sw_sanitize }}"
+            >
+                <div class="ingos-cost-group-bar"></div>
+                <div class="ingos-cost-group-label">
+                    <p class="ingos-cost-group-label-title">{{ "ingos.costTransparency.costFactorLabel04"|trans|sw_sanitize }}</p>
+                    <p class="ingos-cost-group-label-share">{{ page.product.customFields.ingos_cost_transparency_percentage_04 }}%</p>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if page.product.customFields.ingos_cost_transparency_percentage_05|length > 0 %}
+            <div
+                    class="ingos-cost-group ingos-cost-group-05"
+                    id="ingos-cost-group-05"
+                    title="{{ "ingos.costTransparency.costFactorLabel05"|trans|sw_sanitize }}"
+            >
+                <div class="ingos-cost-group-bar"></div>
+                <div class="ingos-cost-group-label">
+                    <p class="ingos-cost-group-label-title">{{ "ingos.costTransparency.costFactorLabel05"|trans|sw_sanitize }}</p>
+                    <p class="ingos-cost-group-label-share">{{ page.product.customFields.ingos_cost_transparency_percentage_05 }}%</p>
+                </div>
+            </div>
+        {% endif %}
 
     </div>
 {% endblock %}
