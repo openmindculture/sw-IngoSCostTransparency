@@ -7,7 +7,7 @@ IngoSCostTransparency is a free and open-source extension for Shopware 6 that ad
 as custom fields with responsive and accessible graphic percentage display on the product details. Colors default to
 theme colors but can be modified by overwriting custom CSS properties. Labels can be set in the extension configuration.
 
-Contribution: you can open issues and pull requests on GitHub.
+Contribution: you can open issues and pull requests [on GitHub](https://github.com/openmindculture/sw-IngoSCostTransparency).
 
 ![screenshot](./product-cost-percentage-transparency.png)
 
@@ -23,8 +23,24 @@ Future/premium plugin options:
 
 ### Custom Fields and Localizable Snippets
 
-- value: integer `product.costTransparencyPercentage01`
+Labels are translatable snippet strings e.g.
+
 - label: string snippet `ingos.costTransparency.costFactorLabel01`
+
+Values are custom fields stored in and read from the built-in customFields JSON array using the productRepository methods.
+Valid ranges are ensured programmatically by normalizing values after reading and before writing.
+Empty and zero values and anything below zero will not be shown in the storefront.
+Vaues above 100 will be normalized to 100.
+Entering values that add up to a number greater than 100 will trigger a warning without changing the values.
+Any value from 1 to 100 will be displayed as you entered it and may lead to unintended visual output.
+
+The basic plugin version uses the following five values:
+
+- value: integer `product.customFields.ingos_cost_transparency_percentage_01`
+- value: integer `product.customFields.ingos_cost_transparency_percentage_02`
+- value: integer `product.customFields.ingos_cost_transparency_percentage_03`
+- value: integer `product.customFields.ingos_cost_transparency_percentage_04`
+- value: integer `product.customFields.ingos_cost_transparency_percentage_05`
 
 ## Development
 

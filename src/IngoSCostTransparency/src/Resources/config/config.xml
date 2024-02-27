@@ -2,36 +2,36 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
-        <title>Cost Factors</title>
-        <title lang="de-DE">Kostenfaktoren</title>
+        <title>Cost Factor Labels</title>
+        <title lang="de-DE">Bezeichnung der Kostenfaktoren</title>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel01</name>
-            <label>cost factor 1</label>
-            <label lang="de-DE">Kostenfaktor 1</label>
+            <label>Cost Factor 1 Label</label>
+            <label lang="de-DE">Kostenfaktor 1 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel01</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel02</name>
-            <label>cost factor 2</label>
-            <label lang="de-DE">Kostenfaktor 2</label>
+            <label>Cost Factor 2 Label</label>
+            <label lang="de-DE">Kostenfaktor 2 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel02</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel03</name>
-            <label>cost factor 3</label>
-            <label lang="de-DE">Kostenfaktor 3</label>
+            <label>Cost Factor 3 Label</label>
+            <label lang="de-DE">Kostenfaktor 3 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel03</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel04</name>
-            <label>cost factor 4</label>
-            <label lang="de-DE">Kostenfaktor 4</label>
+            <label>Cost Factor 4 Label</label>
+            <label lang="de-DE">Kostenfaktor 4 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel04</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel05</name>
-            <label>cost factor 5</label>
-            <label lang="de-DE">Kostenfaktor 5</label>
+            <label>Cost Factor 5 Label</label>
+            <label lang="de-DE">Kostenfaktor 5 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel05</snippet>
         </component>
     </card>
