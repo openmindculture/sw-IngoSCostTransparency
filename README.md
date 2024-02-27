@@ -27,12 +27,7 @@ Labels are translatable snippet strings e.g.
 
 - label: string snippet `ingos.costTransparency.costFactorLabel01`
 
-Values are custom fields stored in and read from the built-in customFields JSON array using the productRepository methods.
-Valid ranges are ensured programmatically by normalizing values after reading and before writing.
-Empty and zero values and anything below zero will not be shown in the storefront.
-Vaues above 100 will be normalized to 100.
-Entering values that add up to a number greater than 100 will trigger a warning without changing the values.
-Any value from 1 to 100 will be displayed as you entered it and may lead to unintended visual output.
+Values are custom fields stored in and read from the built-in customFields JSON array using the productRepository.
 
 The basic plugin version uses the following five values:
 
