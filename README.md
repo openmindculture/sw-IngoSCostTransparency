@@ -14,11 +14,13 @@ Contribution: you can open issues and pull requests [on GitHub](https://github.c
 In the basic plugin version, up to five different cost factors can be defined per product, using the labels defined in
 the extension settings. If any values are set, an additional data visualization tab will be shown on the product details
 page using a bar chart with percentage sizes. Please note: using multiple values below 10% might compromise readability.
+It is possible to use HTML in the description blocks for each cost factor.
 
 Future/premium plugin options:
 - adjust colors and animations
 - add more global cost factors
 - add per-product cost factors/labels
+- override cost factor descriptions per product
 - select adjustment methods to improve low value readability
 
 ### Custom Fields and Localizable Snippets
@@ -29,7 +31,7 @@ Labels are translatable snippet strings e.g.
 
 Values are custom fields stored in and read from the built-in customFields JSON array using the productRepository.
 
-The basic plugin version uses the following five values:
+The basic plugin version uses the following five percentage values per product:
 
 - value: integer `product.customFields.ingos_cost_transparency_percentage_01`
 - value: integer `product.customFields.ingos_cost_transparency_percentage_02`

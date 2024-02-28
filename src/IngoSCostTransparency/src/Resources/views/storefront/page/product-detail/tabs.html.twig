@@ -24,7 +24,7 @@
             {% if ingos_cost_transparency_percentage | length > 0 %}
                 {% set labelSnippetSlug = 'ingos.costTransparency.costFactorLabel0' ~ loop.index %}
                 <div
-                        class="ingos-cost-group ingos-cost-group-0{{ loop.index }} ingos-active"
+                        class="ingos-cost-group ingos-cost-group-0{{ loop.index }}{% if loop.index == 1 %} ingos-active{% endif %}"
                         id="ingos-cost-group-0{{ loop.index }}"
                         title="{{ labelSnippetSlug | trans | sw_sanitize }}"
                 >
@@ -41,7 +41,19 @@
                 %}
             {% endif %}
         {% endfor %}
-       <style>{{ ingos_cost_transparency_style }}</style>
+
+        <style>{{ ingos_cost_transparency_style }}</style>
+
+        <div class="ingos-cost-group-contents" id="ingos-cost-group-contents">
+            {% for i in 1..5 %}
+                {% set descriptionSnippetSlug = 'ingos.costTransparency.costFactorDescription0' ~ i %}
+                <div
+                    class="ingos-cost-group-content{% if i == 1 %} ingos-active{% endif %}"
+                    data-for="ingos-cost-group-0{{ i }}"
+                >{{ descriptionSnippetSlug | trans | sw_sanitize }}
+                </div>
+            {% endfor %}
+        </div>
 
         <!-- TODO replace legacy onclick handler by addEventListener when the content has loaded -->
 

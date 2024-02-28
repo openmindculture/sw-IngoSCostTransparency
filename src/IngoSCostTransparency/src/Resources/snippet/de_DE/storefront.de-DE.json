@@ -7,7 +7,12 @@
       "costFactorLabel02": "Kostenfaktor 2",
       "costFactorLabel03": "Kostenfaktor 3",
       "costFactorLabel04": "Kostenfaktor 4",
-      "costFactorLabel05": "Kostenfaktor 5"
+      "costFactorLabel05": "Kostenfaktor 5",
+      "costFactorDescription01": "<div>Faktor 1 Beschreibung (Beispiel)</div><ul><li>Listen</li><li>Punkte</li></ul>",
+      "costFactorDescription02": "<div>Faktor 2 Beschreibung (Beispiel)</div><ul><li>Listen</li><li>Punkte</li></ul>",
+      "costFactorDescription03": "<div>Faktor 3 Beschreibung (Beispiel)</div><ul><li>Listen</li><li>Punkte</li></ul>",
+      "costFactorDescription04": "<div>Faktor 4 Beschreibung (Beispiel)</div><ul><li>Listen</li><li>Punkte</li></ul>",
+      "costFactorDescription05": "<div>Faktor 5 Beschreibung (Beispiel)</div><ul><li>Listen</li><li>Punkte</li></ul>"
     }
   }
 }

@@ -7,7 +7,12 @@
       "costFactorLabel02": "cost factor 2",
       "costFactorLabel03": "cost factor 3",
       "costFactorLabel04": "cost factor 4",
-      "costFactorLabel05": "cost factor 5"
+      "costFactorLabel05": "cost factor 5",
+      "costFactorDescription01": "<div>factor 1 description (example)</div><ul><li>list</li><li>items</li></ul>",
+      "costFactorDescription02": "<div>factor 2 description (example)</div><ul><li>list</li><li>items</li></ul>",
+      "costFactorDescription03": "<div>factor 3 description (example)</div><ul><li>list</li><li>items</li></ul>",
+      "costFactorDescription04": "<div>factor 4 description (example)</div><ul><li>list</li><li>items</li></ul>",
+      "costFactorDescription05": "<div>factor 5 description (example)</div><ul><li>list</li><li>items</li></ul>"
     }
   }
 }

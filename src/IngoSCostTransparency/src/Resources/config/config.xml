@@ -34,5 +34,35 @@
             <label lang="de-DE">Kostenfaktor 5 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel05</snippet>
         </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorDescription01</name>
+            <label>Cost Factor 1 Description (HTML possible)</label>
+            <label lang="de-DE">Kostenfaktor 1 Beschreibung (HTML möglich)</label>
+            <snippet>ingos.costTransparency.costFactorDescription01</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorDescription02</name>
+            <label>Cost Factor 2 Description (HTML possible)</label>
+            <label lang="de-DE">Kostenfaktor 2 Beschreibung (HTML möglich)</label>
+            <snippet>ingos.costTransparency.costFactorDescription02</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorDescription03</name>
+            <label>Cost Factor 3 Description (HTML possible)</label>
+            <label lang="de-DE">Kostenfaktor 3 Beschreibung (HTML möglich)</label>
+            <snippet>ingos.costTransparency.costFactorDescription03</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorDescription04</name>
+            <label>Cost Factor 4 Description (HTML possible)</label>
+            <label lang="de-DE">Kostenfaktor 4 Beschreibung (HTML möglich)</label>
+            <snippet>ingos.costTransparency.costFactorDescription04</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>snippetFieldCostFactorDescription05</name>
+            <label>Cost Factor 5 Description (HTML possible)</label>
+            <label lang="de-DE">Kostenfaktor 5 Beschreibung (HTML möglich)</label>
+            <snippet>ingos.costTransparency.costFactorDescription05</snippet>
+        </component>
     </card>
 </config>
