@@ -2,66 +2,80 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
+        <title>Cost Transparency Configuration</title>
+        <title lang="de-DE">Kostentransparenzkonfiguration</title>
+        <input-field type="bool">
+            <name>showOnProductDetailPage</name>
+            <label>show cost transparency on product detail page</label>
+            <label lang="de-DE">Kostentransparenz auf Produktdetailseite anzeigen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+    <card>
         <title>Cost Factor Labels</title>
         <title lang="de-DE">Bezeichnung der Kostenfaktoren</title>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel01</name>
-            <label>Cost Factor 1 Label</label>
+            <label>Cost factor 1 label</label>
             <label lang="de-DE">Kostenfaktor 1 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel01</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel02</name>
-            <label>Cost Factor 2 Label</label>
+            <label>Cost factor 2 label</label>
             <label lang="de-DE">Kostenfaktor 2 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel02</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel03</name>
-            <label>Cost Factor 3 Label</label>
+            <label>Cost factor 3 label</label>
             <label lang="de-DE">Kostenfaktor 3 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel03</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel04</name>
-            <label>Cost Factor 4 Label</label>
+            <label>Cost factor 4 label</label>
             <label lang="de-DE">Kostenfaktor 4 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel04</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorLabel05</name>
-            <label>Cost Factor 5 Label</label>
+            <label>Cost factor 5 label</label>
             <label lang="de-DE">Kostenfaktor 5 Bezeichnung</label>
             <snippet>ingos.costTransparency.costFactorLabel05</snippet>
         </component>
+    </card>
+    <card>
+        <title>Cost Factor Descriptions (HTML possible)</title>
+        <title lang="de-DE">Beschreibung der Kostenfaktoren (HTML möglich)</title>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorDescription01</name>
-            <label>Cost Factor 1 Description (HTML possible)</label>
-            <label lang="de-DE">Kostenfaktor 1 Beschreibung (HTML möglich)</label>
+            <label>Cost factor 1 description</label>
+            <label lang="de-DE">Kostenfaktor 1 Beschreibung</label>
             <snippet>ingos.costTransparency.costFactorDescription01</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorDescription02</name>
-            <label>Cost Factor 2 Description (HTML possible)</label>
-            <label lang="de-DE">Kostenfaktor 2 Beschreibung (HTML möglich)</label>
+            <label>Cost factor 2 description</label>
+            <label lang="de-DE">Kostenfaktor 2 Beschreibung</label>
             <snippet>ingos.costTransparency.costFactorDescription02</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorDescription03</name>
-            <label>Cost Factor 3 Description (HTML possible)</label>
-            <label lang="de-DE">Kostenfaktor 3 Beschreibung (HTML möglich)</label>
+            <label>Cost factor 3 description</label>
+            <label lang="de-DE">Kostenfaktor 3 Beschreibung</label>
             <snippet>ingos.costTransparency.costFactorDescription03</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorDescription04</name>
-            <label>Cost Factor 4 Description (HTML possible)</label>
-            <label lang="de-DE">Kostenfaktor 4 Beschreibung (HTML möglich)</label>
+            <label>Cost factor 4 description</label>
+            <label lang="de-DE">Kostenfaktor 4 Beschreibung</label>
             <snippet>ingos.costTransparency.costFactorDescription04</snippet>
         </component>
         <component name="sw-snippet-field">
             <name>snippetFieldCostFactorDescription05</name>
-            <label>Cost Factor 5 Description (HTML possible)</label>
-            <label lang="de-DE">Kostenfaktor 5 Beschreibung (HTML möglich)</label>
+            <label>Cost factor 5 description</label>
+            <label lang="de-DE">Kostenfaktor 5 Beschreibung</label>
             <snippet>ingos.costTransparency.costFactorDescription05</snippet>
         </component>
     </card>
