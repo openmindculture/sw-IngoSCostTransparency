@@ -1,0 +1,57 @@
+<div
+    class="tab-pane fade show"
+    id="ingos-cost-transparency-tab-pane"
+    role="tabpanel"
+    aria-labelledby="ingos-cost-transparency-tab"
+>
+    <h3>{{ 'ingos.costTransparency.costTransparency' | trans }}</h3>
+
+    <div class="ingos-cost">
+        <!-- TODO better define array in php -->
+        {% set ingos_cost_transparency_style = '' %}
+        {% set ingos_cost_transparency_percentages = {
+            'ingos_cost_transparency_percentage_01': page.product.customFields.ingos_cost_transparency_percentage_01,
+            'ingos_cost_transparency_percentage_02': page.product.customFields.ingos_cost_transparency_percentage_02,
+            'ingos_cost_transparency_percentage_03': page.product.customFields.ingos_cost_transparency_percentage_03,
+            'ingos_cost_transparency_percentage_04': page.product.customFields.ingos_cost_transparency_percentage_04,
+            'ingos_cost_transparency_percentage_05': page.product.customFields.ingos_cost_transparency_percentage_05
+        } %}
+        {% for ingos_cost_transparency_percentage in ingos_cost_transparency_percentages %}
+            {% if ingos_cost_transparency_percentage | length > 0 %}
+                {% set labelSnippetSlug = 'ingos.costTransparency.costFactorLabel0' ~ loop.index %}
+                <div
+                    class="ingos-cost-group ingos-cost-group-0{{ loop.index }}{% if loop.index == 1 %} ingos-active{% endif %}"
+                    id="ingos-cost-group-0{{ loop.index }}"
+                    title="{{ labelSnippetSlug | trans | sw_sanitize }}"
+                >
+                    <div class="ingos-cost-group-bar ingos-cost-group-bar-0{{ loop.index }}"></div>
+                    <div class="ingos-cost-group-label">
+                        <p class="ingos-cost-group-label-title">{{ labelSnippetSlug | trans | sw_sanitize }}</p>
+                        <p class="ingos-cost-group-label-share">{{ ingos_cost_transparency_percentage }}%</p>
+                    </div>
+                </div>
+                {% set ingos_cost_transparency_style =
+                    ingos_cost_transparency_style ~
+                    '.ingos-cost-group-bar-0' ~ loop.index ~
+                    ' { width: ' ~ ingos_cost_transparency_percentage ~ '%; } '
+                %}
+            {% endif %}
+        {% endfor %}
+
+        <style>{{ ingos_cost_transparency_style }}</style>
+
+        <div class="ingos-cost-group-contents" id="ingos-cost-group-contents">
+            {% for i in 1..5 %}
+                {% set descriptionSnippetSlug = 'ingos.costTransparency.costFactorDescription0' ~ i %}
+                <div
+                        class="ingos-cost-group-content{% if i == 1 %} ingos-active{% endif %}"
+                        data-for="ingos-cost-group-0{{ i }}"
+                >{{ descriptionSnippetSlug | trans | sw_sanitize }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- TODO replace legacy onclick handler by addEventListener when the content has loaded -->
+
+    </div>
+</div>
