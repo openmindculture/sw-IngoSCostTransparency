@@ -1,4 +1,11 @@
 /** additional cost-transparency information */
+:root {
+  --ingos-cost-transparency-percentage-01: 100%;
+  --ingos-cost-transparency-percentage-02: 100%;
+  --ingos-cost-transparency-percentage-03: 100%;
+  --ingos-cost-transparency-percentage-04: 100%;
+  --ingos-cost-transparency-percentage-05: 100%;
+}
 
 @-webkit-keyframes pulse {
   0% {
@@ -68,31 +75,86 @@
       animation-timing-function: ease-in-out;
     }
 
-    &:nth-child(5n) .ingos-cost-group-bar {
-      background-color: #eebd57;
+    &:nth-child(1) {
+      width: var(--ingos-cost-transparency-percentage-01);
     }
 
-    &:nth-child(5n-1) .ingos-cost-group-bar {
-      background-color: #e44a74;
+    &:nth-child(2) {
+      width: var(--ingos-cost-transparency-percentage-02);
     }
 
-    &:nth-child(5n-2) .ingos-cost-group-bar {
-      background-color: #45b571;
+    &:nth-child(3) {
+      width: var(--ingos-cost-transparency-percentage-03);
     }
 
-    &:nth-child(5n-3) .ingos-cost-group-bar {
+    &:nth-child(4) {
+      width: var(--ingos-cost-transparency-percentage-04);
+    }
+
+    &:nth-child(5) {
+      width: var(--ingos-cost-transparency-percentage-05);
+    }
+
+    &:nth-child(1) .ingos-cost-group-bar {
+      background-color: #f5e04d;
+    }
+
+    &:nth-child(2) .ingos-cost-group-bar {
       background-color: #3b9df9;
     }
 
-    &:nth-child(5n-4) .ingos-cost-group-bar {
-      background-color: #f5e04d;
+    &:nth-child(3) .ingos-cost-group-bar {
+      background-color: #45b571;
+    }
+
+    &:nth-child(4) .ingos-cost-group-bar {
+      background-color: #e44a74;
+    }
+
+    &:nth-child(5) .ingos-cost-group-bar {
+      background-color: #eebd57;
     }
 
     @media (max-width: 1188px) {
       display: flex;
       flex-direction: row;
-      width: 100%;
       gap: 1rem;
+
+      &.ingos-cost-group { /* increase specificity to override landscape default */
+        width: 100%;
+      }
+
+      &:nth-child(1) .ingos-cost-group-bar {
+        width: var(--ingos-cost-transparency-percentage-01);
+      }
+
+      &:nth-child(2) .ingos-cost-group-bar {
+        width: var(--ingos-cost-transparency-percentage-02);
+      }
+
+      &:nth-child(3) .ingos-cost-group-bar {
+        width: var(--ingos-cost-transparency-percentage-03);
+      }
+
+      &:nth-child(4) .ingos-cost-group-bar {
+        width: var(--ingos-cost-transparency-percentage-04);
+      }
+
+      &:nth-child(5) .ingos-cost-group-bar {
+        width: var(--ingos-cost-transparency-percentage-05);
+      }
+    }
+
+    .ingos-cost-group-label {
+      padding-top: 1rem;
+      @media (max-width: 1188px) {
+        position: absolute;
+        right: 0.25rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+      }
     }
 
     .ingos-cost-group-bar {
@@ -109,19 +171,22 @@
     &.ingos-active > .ingos-cost-group-bar {
       box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.5);
     }
-
   }
+}
 
-  .ingos-cost-group-contents {
-    .ingos-cost-group-content {
-      padding: 1rem;
-      background-color: #f2f2f2;
-      color: #000;
-      display: none;
-      &.ingos-active {
-        display: flex;
-      }
+.ingos-cost-group-contents {
+  .ingos-cost-group-content {
+    padding: 1rem;
+    background-color: #f2f2f2;
+    color: #000;
+    display: none;
+    &.ingos-active {
+      display: flex;
     }
   }
+}
+
+.ingos-cost-style-container {
+  display: none;
 }
 
