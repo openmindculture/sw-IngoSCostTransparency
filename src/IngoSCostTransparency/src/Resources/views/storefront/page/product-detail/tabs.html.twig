@@ -5,24 +5,30 @@
 
 {% block page_product_detail_tabs_navigation_description %}
     {{  parent() }}
-    {% if config('IngoSCostTransparency.config.showOnProductDetailPage') %}
-        <li class="nav-item">
-            <a
-                class="nav-link product-detail-tab-navigation-link"
-                id="ingos-cost-transparency-tab"
-                data-bs-toggle="tab"
-                data-off-canvas-tabs="true"
-                href="#ingos-cost-transparency-tab-pane"
-                role="tab"
-                aria-controls="ingos-cost-transparency-tab-pane"
-                aria-selected="false"
-            >
-                <span>{{ 'ingos.costTransparency.costTransparency' | trans }}</span>
-                <span class="product-detail-tab-navigation-icon">
-                    {% sw_icon 'arrow-medium-right' style {pack:'solid'} %}
-                </span>
-            </a>
-        </li>
+    {% if config('IngoSCostTransparency.config.showOnProductDetailPage') and (
+        (page.product.customFields.ingos_cost_transparency_percentage_01 ~
+        page.product.customFields.ingos_cost_transparency_percentage_02 ~
+        page.product.customFields.ingos_cost_transparency_percentage_03 ~
+        page.product.customFields.ingos_cost_transparency_percentage_04 ~
+        page.product.customFields.ingos_cost_transparency_percentage_01) | length > 0
+    ) %}
+            <li class="nav-item">
+                <a
+                    class="nav-link product-detail-tab-navigation-link"
+                    id="ingos-cost-transparency-tab"
+                    data-bs-toggle="tab"
+                    data-off-canvas-tabs="true"
+                    href="#ingos-cost-transparency-tab-pane"
+                    role="tab"
+                    aria-controls="ingos-cost-transparency-tab-pane"
+                    aria-selected="false"
+                >
+                    <span>{{ 'ingos.costTransparency.costTransparency' | trans }}</span>
+                    <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {pack:'solid'} %}
+                    </span>
+                </a>
+            </li>
     {% endif %}
 {% endblock %}
 
