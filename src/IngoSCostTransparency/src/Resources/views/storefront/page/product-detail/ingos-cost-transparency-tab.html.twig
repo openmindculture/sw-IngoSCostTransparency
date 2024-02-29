@@ -7,7 +7,6 @@
     <h3>{{ 'ingos.costTransparency.costTransparency' | trans }}</h3>
 
     <div class="ingos-cost">
-        <!-- TODO better define array in php -->
         {% set ingos_cost_transparency_style_landscape = '' %}
         {% set ingos_cost_transparency_style_portrait = '' %}
         {% set ingos_cost_transparency_percentages = {
@@ -45,7 +44,6 @@
                 %}
             {% endif %}
         {% endfor %}
-        <!-- TODO replace legacy onclick handler by addEventListener when the content has loaded -->
     </div>
 
     <div class="ingos-cost-style-container">
