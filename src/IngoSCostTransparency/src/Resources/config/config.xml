@@ -6,8 +6,8 @@
         <title lang="de-DE">Kostentransparenzkonfiguration</title>
         <input-field type="bool">
             <name>showOnProductDetailPage</name>
-            <label>show cost transparency on product detail page</label>
-            <label lang="de-DE">Kostentransparenz auf Produktdetailseite anzeigen</label>
+            <label>show cost transparency on product detail pages</label>
+            <label lang="de-DE">Kostentransparenz auf Produktdetailseiten anzeigen</label>
             <defaultValue>true</defaultValue>
         </input-field>
     </card>
