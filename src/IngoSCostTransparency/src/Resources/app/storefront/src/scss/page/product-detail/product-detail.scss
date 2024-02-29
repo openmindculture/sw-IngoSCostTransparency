@@ -157,6 +157,17 @@
       }
     }
 
+    .ingos-cost-group-label-title {
+      max-height: 1rem;
+      word-break: break-word;
+      white-space: break-spaces;
+      overflow-wrap: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+
     .ingos-cost-group-bar {
       height: 3rem;
       border-radius: 0.25rem;
