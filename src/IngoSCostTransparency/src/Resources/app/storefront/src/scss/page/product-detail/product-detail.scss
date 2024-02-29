@@ -14,12 +14,20 @@
 .ingos-cost {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
   margin-top: 0.5rem;
+
+  & > *:not(:first-child) {
+    margin-left: 1rem;
+  }
 
   @media (max-width: 1188px) {
     flex-direction: column;
     margin-bottom: 1rem;
+
+    & > *:not(:first-child) {
+      margin-top: 1rem;
+      margin-left: 0;
+    }
   }
 
   .ingos-cost-group {
@@ -73,7 +81,6 @@
     @media (max-width: 1188px) {
       display: flex;
       flex-direction: row;
-      gap: 1rem;
 
       &.ingos-cost-group { /* increase specificity to override landscape default */
         width: 100%;
