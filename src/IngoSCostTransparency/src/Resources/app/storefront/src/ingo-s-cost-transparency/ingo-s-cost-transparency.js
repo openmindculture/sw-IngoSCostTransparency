@@ -2,12 +2,10 @@ import Plugin from 'src/plugin-system/plugin.class';
 
 export default class IngoSCostTransparency extends Plugin {
     init() {
-        console.log('IngoSCostTransparency pugin script: init');
         this.addAnimationEffectClassNames();
         this.applyPercentageStyles();
     }
     addAnimationEffectClassNames() {
-        console.log('addAnimationEffectClassNames');
         const animatableElements = document.querySelectorAll('.ingos-cost-group');
         for (let i=0; i < animatableElements.length; i++) {
             animatableElements[i].addEventListener('click', this.costGroupEnterHandler);
@@ -15,19 +13,14 @@ export default class IngoSCostTransparency extends Plugin {
     }
 
     applyPercentageStyles() {
-        console.log('applyPercentageStyles');
         const rootStyle = document.documentElement.style;
         const percentageBars = document.getElementsByClassName('ingos-cost-group');
-        console.log('rootStyle:', rootStyle);
-        console.log('percentageBars:', percentageBars);
         for (let i=0; i < percentageBars.length; i++) {
             console.log(`percentageBars[${i}]:`, percentageBars[i]);
             if (percentageBars[i].dataset) { console.log(`percentageBars[${i}].dataset evaluates to true.`) }
             if (percentageBars[i].dataset.percentage) { console.log(`percentageBars[${i}].dataset.percentage evaluates to true.`) }
             if (percentageBars[i].dataset.index) { console.log(`percentageBars[${i}].dataset.index evaluates to true.`) }
             if (percentageBars[i].dataset && percentageBars[i].dataset.percentage && percentageBars[i].dataset.index) {
-
-                console.log(`setProperty(--ingos-cost-transparency-percentage-${percentageBars[i].dataset.index}, ${percentageBars[i].dataset.percentage}%)`)
                 rootStyle.setProperty(
                     '--ingos-cost-transparency-percentage-' + percentageBars[i].dataset.index,
                     '' + percentageBars[i].dataset.percentage + '%'
@@ -37,40 +30,25 @@ export default class IngoSCostTransparency extends Plugin {
     }
     costGroupEnterHandler(event) {
         if (!event) { return; }
-        // TODO rewrite from scratch! refactored legacy code is unreadable, unmaintainable and does not even work!
         const activeGroupElement = event.currentTarget;
-        console.log('costGroupEnterHandler activeGroupElement:', activeGroupElement);
-        activeGroupElement.classList.add("ingos-active");
+        activeGroupElement.classList.add('ingos-active');
         const activeId = activeGroupElement.id;
-        console.log(`activeId: ${activeId}`);
-        const costGroupContentWrapper = document.getElementById("ingos-cost-group-contents");
-        console.log('costGroupContentWrapper #ingos-cost-group-contents', costGroupContentWrapper);
+        const costGroupContentWrapper = document.getElementById('ingos-cost-group-contents');
         if (!costGroupContentWrapper) { return; }
-        const activeContent = costGroupContentWrapper.querySelector("*[data-for='" +  activeId + "']");
-        console.log('activeContent', activeContent);
+        const activeContent = costGroupContentWrapper.querySelector('*[data-for="' +  activeId + '"]');
         if (!activeContent) { return; }
-        activeContent.classList.add("ingos-active");
-        const activeBar = activeGroupElement.querySelector(".ingos-cost-group-bar");
-        console.log('activeBar .ingos-cost-group-bar ', activeBar);
-        if (activeBar) {
-            console.log('add animate classes to activeBar');
-            activeBar.classList.add("animate__animated", "animate__pulse");
-        } else { console.log('there is no activeBar')}
+        activeContent.classList.add('ingos-active');
 
-        const inactiveGroups = document.getElementsByClassName("ingos-cost-group");
+        const inactiveGroups = document.getElementsByClassName('ingos-cost-group');
         for (let i = 0; i < inactiveGroups.length; i++) {
-            console.log(`process inactiveGroup ${i}`);
             if (inactiveGroups.item(i) !== activeGroupElement) {
-                inactiveGroups.item(i).classList.remove("ingos-active");
-                const inactiveBar = inactiveGroups.item(i).querySelector(".ingos-cost-group-bar");
-                if (inactiveBar) { inactiveBar.classList.remove("animate__animated", "animate__pulse"); }
+                inactiveGroups.item(i).classList.remove('ingos-active');
             }
         }
-        // TODO removal does not seem to work!
-        var activeGroup = document.getElementsByClassName("ingos-cost-group-content");
+        let activeGroup = document.getElementsByClassName('ingos-cost-group-content');
         for (let i = 0; i < activeGroup.length; i++) {
             if (activeGroup.item(i) !== activeContent) {
-                activeGroup.item(i).classList.remove("ingos-active");
+                activeGroup.item(i).classList.remove('ingos-active');
             }
         }
     }

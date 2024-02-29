@@ -7,40 +7,6 @@
   --ingos-cost-transparency-percentage-05: 100%;
 }
 
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1)
-  }
-
-  50% {
-    -webkit-transform: scale3d(1.05,1.05,1.05);
-    transform: scale3d(1.05,1.05,1.05)
-  }
-
-  to {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1)
-  }
-}
-
-@keyframes pulse {
-  0% {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1)
-  }
-
-  50% {
-    -webkit-transform: scale3d(1.05,1.05,1.05);
-    transform: scale3d(1.05,1.05,1.05)
-  }
-
-  to {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1)
-  }
-}
-
 .ingos-info .icon.icon-info {
   margin-right: 1rem;
 }
@@ -62,17 +28,6 @@
 
     .ingos-cost-group-bar {
       background-color: silver;
-      /* animate__pulse by animate.style */
-      -webkit-animation-duration: 1s;
-      animation-duration: 1s;
-      -webkit-animation-duration: var(--animate-duration);
-      animation-duration: var(--animate-duration);
-      -webkit-animation-fill-mode: both;
-      animation-fill-mode: both;
-      -webkit-animation-name: pulse;
-      animation-name: pulse;
-      -webkit-animation-timing-function: ease-in-out;
-      animation-timing-function: ease-in-out;
     }
 
     &:nth-child(1) {
@@ -172,11 +127,6 @@
       height: 3rem;
       border-radius: 0.25rem;
       box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
-
-      @media (max-width: 577px) {
-        flex-grow: 1;
-        width: 100%;
-      }
     }
 
     &.ingos-active > .ingos-cost-group-bar {
@@ -201,3 +151,7 @@
   display: none;
 }
 
+/* workaround mobile tab bug */
+.product-detail-tabs-content {
+  display: block !important;
+}
