@@ -85,15 +85,7 @@ We might need to grant them expicitly by a command like
 
 - `bin/console cache:clear`
 - `bin/console plugin:refresh`
-- `bin/console theme:compile`
-
-#### Optional Verbose vs. Silent Switches
-
-There is no verbose switch.
-Scripts seem to output verbose warnings by default. Add `--no-debug` to suppress  noncritical warnings and deprecation
-messages, e.g.:
-
-- `bin/console theme:compile --no-debug`
+- `bin/build-storefront.sh`
 
 ### Stop the Container
 
@@ -102,6 +94,10 @@ messages, e.g.:
 ### Remove the Container
 
 - `docker-compose down -v` (-v will remove created volumes)
+
+### Update Shopware version by updating Dockware
+
+- `docker pull shopware/dev`
 
 ## Logfile Locations
 
@@ -134,3 +130,18 @@ There is an optional Shopware CLI that is not included in Dockware. You can get 
 [sw-cli.fos.gg](https://sw-cli.fos.gg) and use the `extension` command to build a theme file:
 
 - `shopware-cli extension zip MyTheme`
+
+The `--disable-git` to "use the source folder as it is" will include ignored files like the `vendor` folder and might
+result in a zip file of > 60 MB that you would not want to distribute as a plugin! If we use git, we should explicitly
+specify which tag or commit hash to check out, e.g. `--git-commit string 0.9.0` but this does not work inside the
+container before configuring git, as the `shopware-cli` expects a respository with no additional settings (like our
+dockware configuration) around it, and creating an ad-hoc respository below the existing one can cause new problems
+like a fatal "dubious ownership in repository" error.
+
+Pragmatically, we could delete the `vendor` directory before creating the zip distribution.
+- `rm -rf custom/plugins/IngoSCostTransparency/vendor/`
+- `shopware-cli extension zip custom/plugins/IngoSCostTransparency/ --disable-git --release --output-directory custom/plugins/dist_tmp`
+
+Now we created the file `custom/plugins/dist_tmp/IngoSCostTransparency.zip` which is visible as
+`src/dist_tmp/IngoSCostTransparency.zip` outside the container and could be moved to `dist`:
+- `sudo mv src/dist_tmp/* dist` to commit it in this development repository.
