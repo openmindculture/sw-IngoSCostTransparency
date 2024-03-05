@@ -3,6 +3,9 @@
 namespace IngoSCostTransparency;
 
 use \Shopware\Core\Defaults;
+use Shopware\Core\Framework\Context;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Uuid\Uuid;
@@ -10,15 +13,21 @@ use Shopware\Core\System\CustomField\CustomFieldTypes;
 
 class IngoSCostTransparency extends Plugin
 {
+    private const CUSTOM_FIELDSET_NAME = 'ingos_cost_transparency_custom_field_set';
+
     public function install(InstallContext $installContext): void
     {
         parent::install($installContext);
 
         $customFieldSetRepository = $this->container->get('custom_field_set.repository');
+        if (!class_exists($customFieldSetRepository)) {
+            return;
+        }
 
-        $customFieldSetRepository->create([
+        $customFieldSetRepository->upsert([
             [
-                'name' => 'ingos_cost_transparency_custom_field_set',
+                'id' => $this->getExistingCustomFieldsetUuid(self::CUSTOM_FIELDSET_NAME, $installContext->getContext()),
+                'name' => self::CUSTOM_FIELDSET_NAME,
                 'config' => [
                     'label' => [
                         'de-DE' => 'Kostenfaktoren',
@@ -130,5 +139,18 @@ class IngoSCostTransparency extends Plugin
                 ],
             ],
         ], $installContext->getContext());
+    }
+
+    private function getExistingCustomFieldsetUuid($customFieldsetName, $context): Uuid|null
+    {
+        $customFieldRepository = $this->container->get('custom_field.repository');
+
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('name', $customFieldsetName));
+        $customField = $customFieldRepository->search($criteria, $context)->first();
+        if ($customField !== null) {
+            return $customField->getId();
+        }
+        return null;
     }
 }
