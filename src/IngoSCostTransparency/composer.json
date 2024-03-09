@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "license": "proprietary",
   "require": {
-    "shopware/core": "^6.5.0",
-    "shopware/storefront": "*"
+    "shopware/core": "~6.5.0",
+    "shopware/storefront": "~6.5.0"
   },
   "minimum-stability": "RC",
   "autoload": {
@@ -16,17 +16,18 @@
   },
   "extra": {
     "shopware-plugin-class": "IngoSCostTransparency\\IngoSCostTransparency",
+    "plugin-icon": "src/Resources/config/plugin.png",
     "label": {
-      "de-DE": "IngoSCostTransparency",
-      "en-GB": "IngoSCostTransparency"
+      "de-DE": "Cost Transparency",
+      "en-GB": "Cost Transparency"
     },
     "description": {
-      "en-GB": "Ingo's Cost Transparency adds optional additional product details as custom fields with responsive and accessible graphic percentage display on the product details.",
-      "de-DE": "Ingo's Cost Transparency zeigt optionale zusätzliche Produktdetails zur Preistransparenz auf responsive und barrierefreie Weise auf der Produktdetailseite an."
+      "en-GB": "The extension adds optional additional product details as custom fields with responsive and accessible graphic percentage display on the product details.",
+      "de-DE": "Die Erweiterung zeigt optionale zusätzliche Produktdetails zur Preistransparenz auf responsive und barrierefreie Weise auf der Produktdetailseite an."
     },
     "manufacturerLink": {
-      "en-GB": "https://www.ingo-steinke.de/\"",
-      "de-DE": "https://www.ingo-steinke.de/\""
+      "en-GB": "https://www.ingo-steinke.de/",
+      "de-DE": "https://www.ingo-steinke.de/"
     },
     "supportLink": {
       "en-GB": "https://www.ingo-steinke.de/",
@@ -35,14 +36,9 @@
   },
   "authors": [
     {
-      "name": "IngoS",
+      "name": "Ingo Steinke",
       "role": "Manufacturer",
       "homepage": "https://www.ingo-steinke.de/"
     }
-  ],
-  "config": {
-    "allow-plugins": {
-      "symfony/runtime": true
-    }
-  }
+  ]
 }
