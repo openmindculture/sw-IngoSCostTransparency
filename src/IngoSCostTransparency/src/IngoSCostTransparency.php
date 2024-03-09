@@ -14,7 +14,11 @@ use Shopware\Core\System\CustomField\CustomFieldTypes;
 class IngoSCostTransparency extends Plugin
 {
     private const CUSTOM_FIELDSET_NAME = 'ingos_cost_transparency_custom_field_set';
-    private const CUSTOM_FIELDSET_RELATION_NAME = 'ingos_cost_transparency_custom_field_set_relation';
+    private const CUSTOM_FIELD_01_NAME = 'ingos_cost_transparency_percentage_01';
+    private const CUSTOM_FIELD_02_NAME = 'ingos_cost_transparency_percentage_02';
+    private const CUSTOM_FIELD_03_NAME = 'ingos_cost_transparency_percentage_03';
+    private const CUSTOM_FIELD_04_NAME = 'ingos_cost_transparency_percentage_04';
+    private const CUSTOM_FIELD_05_NAME = 'ingos_cost_transparency_percentage_05';
 
     public function install(InstallContext $installContext): void
     {
@@ -25,12 +29,12 @@ class IngoSCostTransparency extends Plugin
             return;
         }
 
+        if ($this->customFieldExists($installContext->getContext())) {
+            return;
+        }
+
         $productData = [
             [
-                'id' => $this->getExistingCustomFieldsetUuid(
-                    self::CUSTOM_FIELDSET_NAME,
-                    $installContext->getContext()
-                ),
                 'name' => self::CUSTOM_FIELDSET_NAME,
                 'config' => [
                     'label' => [
@@ -41,7 +45,7 @@ class IngoSCostTransparency extends Plugin
                 ],
                 'customFields' => [
                     [
-                        'name' => 'ingos_cost_transparency_percentage_01',
+                        'name' => self::CUSTOM_FIELD_01_NAME,
                         'type' => CustomFieldTypes::INT,
                         'config' => [
                             'label' => [
@@ -60,7 +64,7 @@ class IngoSCostTransparency extends Plugin
                         'active' => true,
                     ],
                     [
-                        'name' => 'ingos_cost_transparency_percentage_02',
+                        'name' => self::CUSTOM_FIELD_02_NAME,
                         'type' => CustomFieldTypes::INT,
                         'config' => [
                             'label' => [
@@ -79,7 +83,7 @@ class IngoSCostTransparency extends Plugin
                         'active' => true,
                     ],
                     [
-                        'name' => 'ingos_cost_transparency_percentage_03',
+                        'name' => self::CUSTOM_FIELD_03_NAME,
                         'type' => CustomFieldTypes::INT,
                         'config' => [
                             'label' => [
@@ -98,7 +102,7 @@ class IngoSCostTransparency extends Plugin
                         'active' => true,
                     ],
                     [
-                        'name' => 'ingos_cost_transparency_percentage_04',
+                        'name' => self::CUSTOM_FIELD_04_NAME,
                         'type' => CustomFieldTypes::INT,
                         'config' => [
                             'label' => [
@@ -117,7 +121,7 @@ class IngoSCostTransparency extends Plugin
                         'active' => true,
                     ],
                     [
-                        'name' => 'ingos_cost_transparency_percentage_05',
+                        'name' => self::CUSTOM_FIELD_05_NAME,
                         'type' => CustomFieldTypes::INT,
                         'config' => [
                             'label' => [
@@ -138,10 +142,6 @@ class IngoSCostTransparency extends Plugin
                 ],
                 'relations' => [
                     [
-                        'id' => $this->getExistingCustomFieldsetUuid(
-                            self::CUSTOM_FIELDSET_RELATION_NAME,
-                            $installContext->getContext()
-                        ),
                         'entityName' => 'product',
                     ],
                 ],
@@ -151,16 +151,12 @@ class IngoSCostTransparency extends Plugin
         $customFieldSetRepository->upsert($productData, $installContext->getContext());
     }
 
-    private function getExistingCustomFieldsetUuid($customFieldsetName, $context): Uuid|null
+    private function customFieldExists($context): bool
     {
         $customFieldRepository = $this->container->get('custom_field.repository');
-
         $criteria = new Criteria();
-        $criteria->addFilter(new EqualsFilter('name', $customFieldsetName));
+        $criteria->addFilter(new EqualsFilter('name', self::CUSTOM_FIELD_01_NAME));
         $customField = $customFieldRepository->search($criteria, $context)->first();
-        if ($customField !== null) {
-            return $customField->getId();
-        }
-        return null;
+        return ($customField !== null);
     }
 }
