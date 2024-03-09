@@ -14,19 +14,23 @@ use Shopware\Core\System\CustomField\CustomFieldTypes;
 class IngoSCostTransparency extends Plugin
 {
     private const CUSTOM_FIELDSET_NAME = 'ingos_cost_transparency_custom_field_set';
+    private const CUSTOM_FIELDSET_RELATION_NAME = 'ingos_cost_transparency_custom_field_set_relation';
 
     public function install(InstallContext $installContext): void
     {
         parent::install($installContext);
 
         $customFieldSetRepository = $this->container->get('custom_field_set.repository');
-        if (!class_exists($customFieldSetRepository)) {
+        if (!$customFieldSetRepository) {
             return;
         }
 
-        $customFieldSetRepository->upsert([
+        $productData = [
             [
-                'id' => $this->getExistingCustomFieldsetUuid(self::CUSTOM_FIELDSET_NAME, $installContext->getContext()),
+                'id' => $this->getExistingCustomFieldsetUuid(
+                    self::CUSTOM_FIELDSET_NAME,
+                    $installContext->getContext()
+                ),
                 'name' => self::CUSTOM_FIELDSET_NAME,
                 'config' => [
                     'label' => [
@@ -134,11 +138,17 @@ class IngoSCostTransparency extends Plugin
                 ],
                 'relations' => [
                     [
+                        'id' => $this->getExistingCustomFieldsetUuid(
+                            self::CUSTOM_FIELDSET_RELATION_NAME,
+                            $installContext->getContext()
+                        ),
                         'entityName' => 'product',
                     ],
                 ],
             ],
-        ], $installContext->getContext());
+        ];
+
+        $customFieldSetRepository->upsert($productData, $installContext->getContext());
     }
 
     private function getExistingCustomFieldsetUuid($customFieldsetName, $context): Uuid|null
