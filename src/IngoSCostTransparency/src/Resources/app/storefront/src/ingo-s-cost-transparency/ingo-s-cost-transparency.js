@@ -2,8 +2,9 @@ import Plugin from 'src/plugin-system/plugin.class';
 
 export default class IngoSCostTransparency extends Plugin {
     init() {
-        this.addAnimationEffectClassNames();
-        this.applyPercentageStyles();
+        console.log('ngoSCostTransparency JS init(): skip everything');
+        // this.addAnimationEffectClassNames(); // TODO reactivate!
+        // this.applyPercentageStyles(); // TODO reactivate!
     }
     addAnimationEffectClassNames() {
         const animatableElements = document.querySelectorAll('.ingos-cost-group');
