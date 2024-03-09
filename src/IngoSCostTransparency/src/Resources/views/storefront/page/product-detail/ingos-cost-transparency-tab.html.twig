@@ -1,70 +1,69 @@
-<div
-    class="tab-pane fade show"
-    id="ingos-cost-transparency-tab-pane"
-    role="tabpanel"
-    aria-labelledby="ingos-cost-transparency-tab"
->
-    <h3>{{ 'ingos.costTransparency.costTransparency' | trans }}</h3>
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
 
-    <div class="ingos-cost">
-        {% set ingos_cost_transparency_style_landscape = '' %}
-        {% set ingos_cost_transparency_style_portrait = '' %}
-        {% set ingos_cost_transparency_percentages = {
-            'ingos_cost_transparency_percentage_01': page.product.customFields.ingos_cost_transparency_percentage_01,
-            'ingos_cost_transparency_percentage_02': page.product.customFields.ingos_cost_transparency_percentage_02,
-            'ingos_cost_transparency_percentage_03': page.product.customFields.ingos_cost_transparency_percentage_03,
-            'ingos_cost_transparency_percentage_04': page.product.customFields.ingos_cost_transparency_percentage_04,
-            'ingos_cost_transparency_percentage_05': page.product.customFields.ingos_cost_transparency_percentage_05
-        } %}
-        {% for ingos_cost_transparency_percentage in ingos_cost_transparency_percentages %}
-            {% if ingos_cost_transparency_percentage | length > 0 %}
-                {% set labelSnippetSlug = 'ingos.costTransparency.costFactorLabel0' ~ loop.index %}
-                <div
-                    class="ingos-cost-group ingos-cost-group-0{{ loop.index }}{% if loop.index == 1 %} ingos-active{% endif %}"
-                    data-index="0{{ loop.index }}"
-                    data-percentage="{{ ingos_cost_transparency_percentage }}"
-                    id="ingos-cost-group-0{{ loop.index }}"
-                    title="{{ labelSnippetSlug | trans | sw_sanitize }}"
-                >
-                    <div class="ingos-cost-group-bar ingos-cost-group-bar-0{{ loop.index }}"></div>
-                    <div class="ingos-cost-group-label">
-                        <p class="ingos-cost-group-label-title">{{ labelSnippetSlug | trans | sw_sanitize }}</p>
-                        <p class="ingos-cost-group-label-share">{{ ingos_cost_transparency_percentage }}%</p>
+{% block utilities_offcanvas_content %}
+    <div class="tab-pane-container ingos-cost-transparency-tab-pane-container">
+        <h3>{{ 'ingos.costTransparency.costTransparency' | trans }}</h3>
+
+        <div class="ingos-cost">
+            {% set ingos_cost_transparency_style_landscape = '' %}
+            {% set ingos_cost_transparency_style_portrait = '' %}
+            {% set ingos_cost_transparency_percentages = {
+                'ingos_cost_transparency_percentage_01': page.product.customFields.ingos_cost_transparency_percentage_01,
+                'ingos_cost_transparency_percentage_02': page.product.customFields.ingos_cost_transparency_percentage_02,
+                'ingos_cost_transparency_percentage_03': page.product.customFields.ingos_cost_transparency_percentage_03,
+                'ingos_cost_transparency_percentage_04': page.product.customFields.ingos_cost_transparency_percentage_04,
+                'ingos_cost_transparency_percentage_05': page.product.customFields.ingos_cost_transparency_percentage_05
+            } %}
+            {% for ingos_cost_transparency_percentage in ingos_cost_transparency_percentages %}
+                {% if ingos_cost_transparency_percentage | length > 0 %}
+                    {% set labelSnippetSlug = 'ingos.costTransparency.costFactorLabel0' ~ loop.index %}
+                    <div
+                        class="ingos-cost-group ingos-cost-group-0{{ loop.index }}{% if loop.index == 1 %} ingos-active{% endif %}"
+                        data-index="0{{ loop.index }}"
+                        data-percentage="{{ ingos_cost_transparency_percentage }}"
+                        id="ingos-cost-group-0{{ loop.index }}"
+                        title="{{ labelSnippetSlug | trans | sw_sanitize }}"
+                    >
+                        <div class="ingos-cost-group-bar ingos-cost-group-bar-0{{ loop.index }}"></div>
+                        <div class="ingos-cost-group-label">
+                            <p class="ingos-cost-group-label-title">{{ labelSnippetSlug | trans | sw_sanitize }}</p>
+                            <p class="ingos-cost-group-label-share">{{ ingos_cost_transparency_percentage }}%</p>
+                        </div>
                     </div>
+                    {% set ingos_cost_transparency_style_landscape =
+                        ingos_cost_transparency_style_landscape ~
+                        '.ingos-cost-group-0' ~ loop.index ~
+                        ' { width: ' ~ ingos_cost_transparency_percentage ~ '%; } '
+                    %}
+                    {% set ingos_cost_transparency_style_portrait =
+                        ingos_cost_transparency_style_portrait ~
+                        '.ingos-cost-group-bar-0' ~ loop.index ~
+                        ' { width: ' ~ ingos_cost_transparency_percentage ~ '%; } '
+                    %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="ingos-cost-style-container">
+            <noscript>
+                <style>
+                    {{ ingos_cost_transparency_style_landscape }}
+                    @media (max-width: 1188px) {
+                    {{ ingos_cost_transparency_style_portrait }}
+                    }
+                </style>
+            </noscript>
+        </div>
+
+        <div class="ingos-cost-group-contents" id="ingos-cost-group-contents">
+            {% for i in 1..5 %}
+                {% set descriptionSnippetSlug = 'ingos.costTransparency.costFactorDescription0' ~ i %}
+                <div
+                    class="ingos-cost-group-content{% if i == 1 %} ingos-active{% endif %}"
+                    data-for="ingos-cost-group-0{{ i }}"
+                >{{ descriptionSnippetSlug | trans | sw_sanitize }}
                 </div>
-                {% set ingos_cost_transparency_style_landscape =
-                    ingos_cost_transparency_style_landscape ~
-                    '.ingos-cost-group-0' ~ loop.index ~
-                    ' { width: ' ~ ingos_cost_transparency_percentage ~ '%; } '
-                %}
-                {% set ingos_cost_transparency_style_portrait =
-                    ingos_cost_transparency_style_portrait ~
-                    '.ingos-cost-group-bar-0' ~ loop.index ~
-                    ' { width: ' ~ ingos_cost_transparency_percentage ~ '%; } '
-                %}
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-
-    <div class="ingos-cost-style-container">
-        <noscript>
-            <style>
-                {{ ingos_cost_transparency_style_landscape }}
-                @media (max-width: 1188px) {
-                {{ ingos_cost_transparency_style_portrait }}
-                }
-            </style>
-        </noscript>
-    </div>
-
-    <div class="ingos-cost-group-contents" id="ingos-cost-group-contents">
-        {% for i in 1..5 %}
-            {% set descriptionSnippetSlug = 'ingos.costTransparency.costFactorDescription0' ~ i %}
-            <div
-                class="ingos-cost-group-content{% if i == 1 %} ingos-active{% endif %}"
-                data-for="ingos-cost-group-0{{ i }}"
-            >{{ descriptionSnippetSlug | trans | sw_sanitize }}
-            </div>
-        {% endfor %}
-    </div>
-</div>
+{% endblock %}

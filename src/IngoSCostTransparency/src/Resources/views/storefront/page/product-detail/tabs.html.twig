@@ -35,6 +35,12 @@
 {% block page_product_detail_tabs_content_description %}
     {{  parent() }}
     {% if config('IngoSCostTransparency.config.showOnProductDetailPage') %}
-        {% sw_include '@IngoSCostTransparency/storefront/page/product-detail/ingos-cost-transparency-tab.html.twig' %}
+        <div class="tab-pane fade show"
+             id="ingos-cost-transparency-tab-pane"
+             role="tabpanel"
+             aria-labelledby="ingos-cost-transparency-tab"
+        >
+            {% sw_include '@IngoSCostTransparency/storefront/page/product-detail/ingos-cost-transparency-tab.html.twig' %}
+        </div>
     {% endif %}
 {% endblock %}
