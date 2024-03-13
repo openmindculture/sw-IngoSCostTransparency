@@ -17,14 +17,16 @@
                     class="nav-link product-detail-tab-navigation-link"
                     id="ingos-cost-transparency-tab"
                     data-bs-toggle="tab"
-                    data-off-canvas-tabs="true"
+                    data-off-canvas-tabs="true" {# new attribute name #}
+                    data-offcanvas-tabs="true" {# deprecated attribute name for backward compatibility #}
+                    data-removeme="TODO"
                     href="#ingos-cost-transparency-tab-pane"
                     role="tab"
                     aria-controls="ingos-cost-transparency-tab-pane"
                     aria-selected="false"
             >
                 <span>{{ 'ingos.costTransparency.costTransparency' | trans }}</span>
-                <span>2024-03-09_18:53</span>
+                <span>2024-03-13_13:03</span>
                 <span class="product-detail-tab-navigation-icon">
             {% sw_icon 'arrow-medium-right' style {pack:'solid'} %}
         </span>
