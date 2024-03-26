@@ -3,7 +3,11 @@
 Inspired by potential customers' requirements and based on [Ingo Steinke](https://www.ingo-steinke.com/)'s [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), [IngoSCostTransparency (`sw-IngoSCostTransparency`)](https://github.com/openmindculture/sw-IngoSCostTransparency) is a free and open-source extension for Shopware 6 that adds optional additional product details
 as custom fields with responsive and accessible graphic percentage display on the product details.
 
+TODO: add a more specific purpose / use case!
+
 Colors default to theme colors but can be modified by overwriting custom CSS properties. Label captions can be configured in the extension configuration.
+
+There is a short [German description](./LIESMICH.md).
 
 ## Configuration
 
