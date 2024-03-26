@@ -15,6 +15,12 @@ To configure the plugin's labels and visibility, open the Administration and go 
 
 ![screenshot collage](./cost-transparency-configuration.png)
 
+## Editing Custom Product Fields
+
+Custom fields can be found an edited in the "Specifications" tab of each product.
+
+![screenshot](./product-fields-editor.png)
+
 ## Storefront Display
 
 The layout is responsive and accessible. Mobile content will be displayed off canvas like the built-in description and reviews tabs. Tablet and mobile views show column rows, while wide desktop screens show columns. Captions of small columns will be shortened. The full caption is available in a title tag. Simple HTML markup is possible in captions, like using bold tags or list items.
