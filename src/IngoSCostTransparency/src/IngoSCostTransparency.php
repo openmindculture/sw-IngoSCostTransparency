@@ -3,12 +3,10 @@
 namespace IngoSCostTransparency;
 
 use \Shopware\Core\Defaults;
-use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
-use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\CustomField\CustomFieldTypes;
 
 class IngoSCostTransparency extends Plugin
@@ -147,7 +145,6 @@ class IngoSCostTransparency extends Plugin
                 ],
             ],
         ];
-
         $customFieldSetRepository->upsert($productData, $installContext->getContext());
     }
 
