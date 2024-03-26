@@ -2,19 +2,16 @@
 
 ## sw-IngoSCostTransparency
 
-Inspired by potential customers' requirements and based on my [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep),
-IngoSCostTransparency is a free and open-source extension for Shopware 6 that adds optional additional product details
-as custom fields with responsive and accessible graphic percentage display on the product details. Colors default to
-theme colors but can be modified by overwriting custom CSS properties. Labels can be set in the extension configuration.
+Inspired by potential customers' requirements and based on my [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep),  IngoSCostTransparency is a free and open-source extension for Shopware 6 that adds optional additional product details
+as custom fields with responsive and accessible graphic percentage display on the product details. Colors default to theme colors but can be modified by overwriting custom CSS properties. Labels can be set in the extension configuration.
+
+The layout is responsive and accessible. Mobile content will be displayed off canvas like the built-in description and reviews tabs. Tablet and mobile views show column rows, while wide desktop screens show columns. Captions of small columns will be shortened. The full caption is available in a title tag. Simple HTML markup is possible in captions, like using bold tags or list items.
 
 Contribution: you can open issues and pull requests [on GitHub](https://github.com/openmindculture/sw-IngoSCostTransparency).
 
 ![screenshot](./product-cost-percentage-transparency.png)
 
-In the basic plugin version, up to five different cost factors can be defined per product, using the labels defined in
-the extension settings. If any values are set, an additional data visualization tab will be shown on the product details
-page using a bar chart with percentage sizes. Please note: using multiple values below 10% might compromise readability.
-It is possible to use HTML in the description blocks for each cost factor.
+In the basic plugin version, up to five different cost factors can be defined per product, using the labels defined in the extension settings. If any values are set, an additional data visualization tab will be shown on the product details  page using a bar chart with percentage sizes. Please note: using multiple values below 10% might compromise readability.  It is possible to use HTML in the description blocks for each cost factor.
 
 Future/premium plugin options:
 - adjust colors and animations
@@ -38,6 +35,10 @@ The basic plugin version uses the following five percentage values per product:
 - value: integer `product.customFields.ingos_cost_transparency_percentage_03`
 - value: integer `product.customFields.ingos_cost_transparency_percentage_04`
 - value: integer `product.customFields.ingos_cost_transparency_percentage_05`
+
+## Compatibilty (Initial Release 1.0, March 2024)
+
+The storefront has been tested with the lastest major browsers, including Chrome, Firefox, Edge, and Safari, on desktop and mobile devices. The plugin has been tested with and released for Shopware 6.6, and it is probably backwards compatible with Shopware 6.5 for which it had initially been developed.
 
 ## Development
 
