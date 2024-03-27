@@ -9,6 +9,8 @@ Label captions can be configured in the extension configuration.
 Short and long descriptions in German and English, and descriptive screenshots for the extension marketplace can be
 previewed in [marketplace-descriptions-and-screenshots.html](./marketplace-descriptions-and-screenshots.html)
 
+The content of the images/screenshots must be in English.
+
 TODO: add a more specific purpose / use case and detailled instructions for installation, usage, and test.
 
 
