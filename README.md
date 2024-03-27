@@ -172,3 +172,15 @@ Pragmatically, we could delete the `vendor` directory before creating the zip di
 Now we created the file `custom/plugins/dist_tmp/IngoSCostTransparency.zip` which is visible as
 `src/dist_tmp/IngoSCostTransparency.zip` outside the container and could be moved to `dist`:
 - `sudo mv src/dist_tmp/* dist` to commit it in this development repository.
+
+### Official Testing Environment
+
+Instead of our development setup, there is another, official testing environment built with Docker, used by Shopware
+for validating plugins. Their setup includes some of the typical gotchas like subdirectory paths and a nonstandard
+storefront language (Dutch). 
+
+- `docker run --rm -p 80:80 -e VIRTUAL_HOST=localhost ghcr.io/shopwarelabs/testenv:6.X.X`
+
+Specific validation rules are listed on their website as well:
+
+https://developer.shopware.com/docs/resources/guidelines/testing/store/quality-guidelines-plugins/
