@@ -1,9 +1,10 @@
 {
   "name": "ingo-s/ingo-s-cost-transparency",
-  "description": "Ingo's Cost Transparency",
-  "type": "shopware-platform-plugin",
   "version": "1.0.0",
-  "license": "proprietary",
+  "type": "shopware-platform-plugin",
+  "description": "Cost Transparency",
+  "keywords": ["shopware", "performance", "minify", "http2"],
+  "license": "MIT",
   "require": {
     "shopware/core": "^6.6.0",
     "shopware/storefront": "^6.6.0"

@@ -186,7 +186,7 @@ https://developer.shopware.com/docs/resources/guidelines/testing/store/quality-g
 
 To do after every update:
 - validate the plugin against the checklist (manually)
-- run all available validations, checks and audits (e.g. using `shopware-cli`)
+- run all available validations, checks and audits (e.g. using `shopware-cli` which obsoletes the `FroshPluginUploader`)
 - build an updated release file inside the development container (see above)
 - stop the development container
 - run the testing container (see below)
