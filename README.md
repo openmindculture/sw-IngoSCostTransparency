@@ -1,13 +1,22 @@
-# Ingo's Cost Transparency for Shopware 6
+# Cost Transparency for Shopware 6
 
 Inspired by potential customers' requirements and based on [Ingo Steinke](https://www.ingo-steinke.com/)'s [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), [IngoSCostTransparency (`sw-IngoSCostTransparency`)](https://github.com/openmindculture/sw-IngoSCostTransparency) is a free and open-source extension for Shopware 6 that adds optional additional product details
 as custom fields with responsive and accessible graphic percentage display on the product details.
 
-TODO: add a more specific purpose / use case!
+Colors default to theme colors but can be modified by overwriting custom CSS properties.
+Label captions can be configured in the extension configuration.
 
-Colors default to theme colors but can be modified by overwriting custom CSS properties. Label captions can be configured in the extension configuration.
+Short and long descriptions in German and English, and descriptive screenshots for the extension marketplace can be
+previewed in [marketplace-descriptions-and-screenshots.html](./marketplace-descriptions-and-screenshots.html)
 
-There is a short [German description](./LIESMICH.md).
+TODO: add a more specific purpose / use case and detailled instructions for installation, usage, and test.
+
+
+## Cost Transparency Display in the Storefront
+
+The layout is responsive and accessible. Mobile content will be displayed off canvas like the built-in description and reviews tabs. Tablet and mobile views show column rows, while wide desktop screens show columns. Captions of small columns will be shortened. The full caption is available in a title tag. Simple HTML markup is possible in captions, like using bold tags or list items.
+
+![screenshot collage](./product-cost-percentage-transparency.png)
 
 ## Configuration
 
@@ -20,12 +29,6 @@ To configure the plugin's labels and visibility, open the Administration and go 
 Custom fields can be found an edited in the "Specifications" tab of each product.
 
 ![screenshot](./product-fields-editor.png)
-
-## Storefront Display
-
-The layout is responsive and accessible. Mobile content will be displayed off canvas like the built-in description and reviews tabs. Tablet and mobile views show column rows, while wide desktop screens show columns. Captions of small columns will be shortened. The full caption is available in a title tag. Simple HTML markup is possible in captions, like using bold tags or list items.
-
-![screenshot collage](./product-cost-percentage-transparency.png)
 
 ## Usage, Notes, and Caveats
 
