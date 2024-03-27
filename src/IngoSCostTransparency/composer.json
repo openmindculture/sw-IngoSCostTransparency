@@ -18,7 +18,7 @@
     "shopware-plugin-class": "IngoSCostTransparency\\IngoSCostTransparency",
     "plugin-icon": "src/Resources/config/plugin.png",
     "label": {
-      "de-DE": "Cost Transparency",
+      "de-DE": "Kostentransparenz",
       "en-GB": "Cost Transparency"
     },
     "description": {

@@ -173,14 +173,27 @@ Now we created the file `custom/plugins/dist_tmp/IngoSCostTransparency.zip` whic
 `src/dist_tmp/IngoSCostTransparency.zip` outside the container and could be moved to `dist`:
 - `sudo mv src/dist_tmp/* dist` to commit it in this development repository.
 
-### Official Testing Environment
+### Official Testing Environment and Checklist
 
-Instead of our development setup, there is another, official testing environment built with Docker, used by Shopware
+Specific validation rules are listed in the official plugin quality guidelines checklist:
+
+https://developer.shopware.com/docs/resources/guidelines/testing/store/quality-guidelines-plugins/
+
+To do after every update:
+- validate the plugin against the checklist (manually)
+- run all available validations, checks and audits (e.g. using `shopware-cli`)
+- build an updated release file inside the development container (see above)
+- stop the development container
+- run the testing container (see below)
+- upload and install the release file in the testing container
+- repeat all manual test steps and ensure that the documentation matches the actual behavior
+- uninstall, reinstall and re-test the plugin (twice, with or without "delete all data")
+
+There is an official testing environment built with Docker, used by Shopware
 for validating plugins. Their setup includes some of the typical gotchas like subdirectory paths and a nonstandard
-storefront language (Dutch). 
+storefront language (Dutch). It always uses the latest 6.x Shopware release.
 
 - `docker run --rm -p 80:80 -e VIRTUAL_HOST=localhost ghcr.io/shopwarelabs/testenv:6.X.X`
 
-Specific validation rules are listed on their website as well:
-
-https://developer.shopware.com/docs/resources/guidelines/testing/store/quality-guidelines-plugins/
+If we want to retain and claim backward compatibility, we must repeat the test with alternative versions,
+e.g. by using Dockware Docker tags to rebuild our development environment. 
