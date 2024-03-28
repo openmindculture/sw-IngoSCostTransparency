@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "type": "shopware-platform-plugin",
   "description": "Cost Transparency",
-  "keywords": ["shopware", "performance", "minify", "http2"],
+  "keywords": ["shopware", "storefront", "custom-fields", "product-details", "tabs"],
   "license": "MIT",
-  "require": {
-    "shopware/core": "^6.6.0",
-    "shopware/storefront": "^6.6.0"
-  },
-  "minimum-stability": "RC",
+  "authors": [
+    {
+      "name": "Ingo Steinke",
+      "role": "Manufacturer",
+      "homepage": "https://www.ingo-steinke.de/"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "IngoSCostTransparency\\": "src/"
@@ -29,17 +31,10 @@
     "manufacturerLink": {
       "en-GB": "https://www.ingo-steinke.de/",
       "de-DE": "https://www.ingo-steinke.de/"
-    },
-    "supportLink": {
-      "en-GB": "https://www.ingo-steinke.de/",
-      "de-DE": "https://www.ingo-steinke.de/"
     }
   },
-  "authors": [
-    {
-      "name": "Ingo Steinke",
-      "role": "Manufacturer",
-      "homepage": "https://www.ingo-steinke.de/"
-    }
-  ]
+  "require": {
+    "shopware/core": "^6.6.0",
+    "shopware/storefront": "^6.6.0"
+  }
 }
