@@ -25,16 +25,16 @@
       "en-GB": "Cost Transparency"
     },
     "description": {
-      "en-GB": "The extension adds optional additional product details as custom fields with responsive and accessible graphic percentage display on the product details.",
-      "de-DE": "Die Erweiterung zeigt optionale zusätzliche Produktdetails zur Preistransparenz auf responsive und barrierefreie Weise auf der Produktdetailseite an."
+      "en-GB": "Show visual cost transparency information in a new tab on the product details page. Captions and details are configured globally, percentages per product.",
+      "de-DE": "Zeige grafische Kostentransparenzinformationen in einem neuen Reiter auf der Produktdetailseite. Beschriftung wird global konfiguriert, Prozetwerte pro Produkt."
     },
     "manufacturerLink": {
       "en-GB": "https://www.ingo-steinke.de/",
       "de-DE": "https://www.ingo-steinke.de/"
     },
     "supportLink": {
-      "en-GB": "https://www.ingo-steinke.com/#plugin-programmierung",
-      "de-DE": "https://www.ingo-steinke.de/#plugin-programmierung"
+      "en-GB": "https://github.com/openmindculture/sw-IngoSCostTransparency/issues",
+      "de-DE": "https://github.com/openmindculture/sw-IngoSCostTransparency/issues"
     }
   },
   "require": {
