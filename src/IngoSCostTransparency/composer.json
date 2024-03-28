@@ -31,6 +31,10 @@
     "manufacturerLink": {
       "en-GB": "https://www.ingo-steinke.de/",
       "de-DE": "https://www.ingo-steinke.de/"
+    },
+    "supportLink": {
+      "en-GB": "https://www.ingo-steinke.com/#plugin-programmierung",
+      "de-DE": "https://www.ingo-steinke.de/#plugin-programmierung"
     }
   },
   "require": {
