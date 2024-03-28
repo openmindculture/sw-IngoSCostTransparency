@@ -154,6 +154,6 @@ class IngoSCostTransparency extends Plugin
         $criteria = new Criteria();
         $criteria->addFilter(new EqualsFilter('name', self::CUSTOM_FIELD_01_NAME));
         $customField = $customFieldRepository->search($criteria, $context)->first();
-        return ($customField !== null);
+        return $customField !== null;
     }
 }
