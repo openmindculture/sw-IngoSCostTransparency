@@ -14,7 +14,7 @@
                 'ingos_cost_transparency_percentage_05': page.product.customFields.ingos_cost_transparency_percentage_05
             } %}
             {% for ingos_cost_transparency_percentage in ingos_cost_transparency_percentages %}
-                {% if ingos_cost_transparency_percentage | length > 0 %}
+                {% if ingos_cost_transparency_percentage | length > 0 && ingos_cost_transparency_percentage > 0 %}
                     {% set labelSnippetSlug = 'ingos.costTransparency.costFactorLabel0' ~ loop.index %}
                     <div
                         class="ingos-cost-group ingos-cost-group-0{{ loop.index }}{% if loop.index == 1 %} ingos-active{% endif %}"
