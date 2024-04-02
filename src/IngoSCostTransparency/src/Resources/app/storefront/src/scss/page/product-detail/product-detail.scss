@@ -37,55 +37,55 @@
     }
   }
 
+  .ingos-cost-group-01 {
+    width: var(--ingos-cost-transparency-percentage-01);
+  }
+
+  .ingos-cost-group-02 {
+    width: var(--ingos-cost-transparency-percentage-02);
+  }
+
+  .ingos-cost-group-03 {
+    width: var(--ingos-cost-transparency-percentage-03);
+  }
+
+  .ingos-cost-group-04 {
+    width: var(--ingos-cost-transparency-percentage-04);
+  }
+
+  .ingos-cost-group-05 {
+    width: var(--ingos-cost-transparency-percentage-05);
+  }
+
   .ingos-cost-group {
     position: static;
     cursor: pointer;
 
     .ingos-cost-group-bar {
-      background-color: silver;
+      background-color: silver; /* fallback style */
     }
 
-    &:nth-child(1) {
-      width: var(--ingos-cost-transparency-percentage-01);
-    }
-
-    &:nth-child(2) {
-      width: var(--ingos-cost-transparency-percentage-02);
-    }
-
-    &:nth-child(3) {
-      width: var(--ingos-cost-transparency-percentage-03);
-    }
-
-    &:nth-child(4) {
-      width: var(--ingos-cost-transparency-percentage-04);
-    }
-
-    &:nth-child(5) {
-      width: var(--ingos-cost-transparency-percentage-05);
-    }
-
-    &:nth-child(1) .ingos-cost-group-bar {
+    .ingos-cost-group-bar-01 {
       background-color: #f5e04d;
       background-color: var(--ingos-cost-transparency-color-01);
     }
 
-    &:nth-child(2) .ingos-cost-group-bar {
+    .ingos-cost-group-bar-02 {
       background-color: #3b9df9;
       background-color: var(--ingos-cost-transparency-color-02);
     }
 
-    &:nth-child(3) .ingos-cost-group-bar {
+    .ingos-cost-group-bar-03 {
       background-color: #45b571;
       background-color: var(--ingos-cost-transparency-color-03);
     }
 
-    &:nth-child(4) .ingos-cost-group-bar {
+    .ingos-cost-group-bar-04 {
       background-color: #e44a74;
       background-color: var(--ingos-cost-transparency-color-04);
     }
 
-    &:nth-child(5) .ingos-cost-group-bar {
+    .ingos-cost-group-bar-05 {
       background-color: #eebd57;
       background-color: var(--ingos-cost-transparency-color-05);
     }
@@ -98,23 +98,23 @@
         width: 100%;
       }
 
-      &:nth-child(1) .ingos-cost-group-bar {
+      .ingos-cost-group-bar-01 {
         width: var(--ingos-cost-transparency-percentage-01);
       }
 
-      &:nth-child(2) .ingos-cost-group-bar {
+      .ingos-cost-group-bar-02 {
         width: var(--ingos-cost-transparency-percentage-02);
       }
 
-      &:nth-child(3) .ingos-cost-group-bar {
+      .ingos-cost-group-bar-03 {
         width: var(--ingos-cost-transparency-percentage-03);
       }
 
-      &:nth-child(4) .ingos-cost-group-bar {
+      .ingos-cost-group-bar-04 {
         width: var(--ingos-cost-transparency-percentage-04);
       }
 
-      &:nth-child(5) .ingos-cost-group-bar {
+      .ingos-cost-group-bar-05 {
         width: var(--ingos-cost-transparency-percentage-05);
       }
     }

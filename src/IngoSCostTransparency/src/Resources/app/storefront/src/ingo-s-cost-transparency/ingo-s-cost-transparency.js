@@ -2,11 +2,11 @@ import Plugin from 'src/plugin-system/plugin.class';
 
 export default class IngoSCostTransparency extends Plugin {
     init() {
-        console.log('ready to set regular event handler');
-        this.addEffectsAndSwitchDetailsHandler();
-
         console.log('ready to set percentage styles');
         this.applyPercentageStyles();
+
+        console.log('ready to set regular event handler');
+        this.addEffectsAndSwitchDetailsHandler();
 
         // this.$emitter.publish('onClickOffCanvasTab');
 
@@ -44,6 +44,7 @@ export default class IngoSCostTransparency extends Plugin {
 
     applyPercentageStyles() {
         const rootStyle = document.documentElement.style;
+        console.log('applyPercentageStyles, rootStyle:', rootStyle);
         const percentageBars = document.getElementsByClassName('ingos-cost-group');
         for (let i=0; i < percentageBars.length; i++) {
             if (percentageBars[i].dataset && percentageBars[i].dataset.percentage && percentageBars[i].dataset.index) {
@@ -51,8 +52,13 @@ export default class IngoSCostTransparency extends Plugin {
                     '--ingos-cost-transparency-percentage-' + percentageBars[i].dataset.index,
                     '' + percentageBars[i].dataset.percentage + '%'
                 );
+                console.log('set rootStyle propery ' + '--ingos-cost-transparency-percentage-' + percentageBars[i].dataset.index
+                + ' to value ' + percentageBars[i].dataset.percentage + '%');
+            } else {
+                console.log('cant set percentage style');
             }
         }
+        console.log('done iterating percentageBars');
     }
     addEffectsAndSwitchDetails(event) {
         /*
