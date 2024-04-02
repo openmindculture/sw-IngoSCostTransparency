@@ -224,4 +224,12 @@ storefront language (Dutch). It always uses the latest 6.x Shopware release.
   - Password: demodemo
 
 If we want to retain and claim backward compatibility, we must repeat the test with alternative versions,
-e.g. by using Dockware Docker tags to rebuild our development environment. 
+e.g. by using Dockware Docker tags to rebuild our development environment.
+
+#### Cross-Device / Mobile Testing
+
+We can use a service like BrowserStack to verify functionality in different devices.
+
+We can add an alternative host name, like `bs-local.com` in the storefront configuration.
+
+![settings screenshot](storefront-testing-dutch-bs-local.png)
