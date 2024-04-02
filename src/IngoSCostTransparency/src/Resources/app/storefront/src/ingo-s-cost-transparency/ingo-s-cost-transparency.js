@@ -17,19 +17,19 @@ export default class IngoSCostTransparency extends Plugin {
             if (offCanvasTabPlugin) {
                 offCanvasTabPlugin.$emitter.subscribe('hideCookieBar', this.onHideCookieBar);
             } else {
-                console.log('no offCanvasTabPlugin');
+                console.log('no offCanvasTabPlugin, try alternative approach ...');
+                if (tabElement && tabElement.$emitter && tabElement.$emitter.subscribe && typeof tabElement.$emitter.subscribe === 'function') {
+                    tabElement.$emitter.subscribe('onClickOffCanvasTab', () => {
+                        console.log('subscribed onClickOffCanvasTab callback function start...');
+                        this.addEffectsAndSwitchDetailsHandler();
+                        console.log('... subscribed onClickOffCanvasTab callback function end.');
+                    })
+                    console.log('Added subscriber to onClickOffCanvasTab.');
+                }
             }
         } else {
             console.log('no tabElement');
         }
-
-        /*
-        if (tabElement && tabElement.$emitter && tabElement.$emitter.subscribe && typeof tabElement.$emitter.subscribe === 'function') {
-            tabElement.$emitter.subscribe('onClickOffCanvasTab', () => {
-                this.addEffectsAndSwitchDetailsHandler();
-            })
-        }
-        */
     }
     addEffectsAndSwitchDetailsHandler() {
         console.log('addEffectsAndSwitchDetailsHandler');
@@ -37,13 +37,7 @@ export default class IngoSCostTransparency extends Plugin {
         console.log('animatableElements', animatableElements);
         for (let i=0; i < animatableElements.length; i++) {
             console.log(`animatableElements[${i}]`, animatableElements[i]);
-            if (!animatableElements[i].dataset.hasEventListener) {
-                console.log('Element had no event listener yet. Add event listener...')
-                animatableElements[i].addEventListener('click', this.addEffectsAndSwitchDetails);
-                animatableElements[i].dataset.hasEventListener='true';
-            } else {
-                console.log('element already has an event listener');
-            }
+            animatableElements[i].addEventListener('click', this.addEffectsAndSwitchDetails);
         }
         console.log('after iterating animatableElements');
     }
@@ -62,23 +56,34 @@ export default class IngoSCostTransparency extends Plugin {
     }
     addEffectsAndSwitchDetails(event) {
         if (!event) { return; }
+        console.log('addEffectsAndSwitchDetails(event), event:', event);
         const activeGroupElement = event.currentTarget;
+        console.log(' activeGroupElement = event.currentTarget:', activeGroupElement);
+        if (!activeGroupElement) { console.log('no activeGroupElement'); return; }
         activeGroupElement.classList.add('ingos-active');
         const activeId = activeGroupElement.id;
         const costGroupContentWrapper = document.getElementById('ingos-cost-group-contents');
+        console.log('costGroupContentWrapper:', costGroupContentWrapper);
         if (!costGroupContentWrapper) { return; }
         const activeContent = costGroupContentWrapper.querySelector('*[data-for="' +  activeId + '"]');
         if (!activeContent) { return; }
         activeContent.classList.add('ingos-active');
+        console.log('added className ingos-active to activeContent', activeContent);
 
         const inactiveGroups = document.getElementsByClassName('ingos-cost-group');
         for (let i = 0; i < inactiveGroups.length; i++) {
+            console.log(`try to compare if inactiveGroups.item(${i}) !== activeGroupElement`);
             if (inactiveGroups.item(i) !== activeGroupElement) {
                 inactiveGroups.item(i).classList.remove('ingos-active');
             }
         }
         let activeGroup = document.getElementsByClassName('ingos-cost-group-content');
+        console.log('activeGroup = .ingos-cost-group-content : ', activeGroup);
         for (let i = 0; i < activeGroup.length; i++) {
+            console.log(`try to compare if activeGroup.item(${i}) !== activeContent`);
+            console.log('activeContent:', activeContent);
+            console.log(`activeGroup.item(${i})`, activeGroup.item(i));
+            // could there be a safer, more generic approach, comparing data or tokens instead of elements?
             if (activeGroup.item(i) !== activeContent) {
                 activeGroup.item(i).classList.remove('ingos-active');
             }
