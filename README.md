@@ -198,7 +198,13 @@ There is an official testing environment built with Docker, used by Shopware
 for validating plugins. Their setup includes some of the typical gotchas like subdirectory paths and a nonstandard
 storefront language (Dutch). It always uses the latest 6.x Shopware release.
 
-- `docker run --rm -p 80:80 -e VIRTUAL_HOST=localhost ghcr.io/shopwarelabs/testenv:6.X.X`
+- `docker run --rm -p 80:80 -e VIRTUAL_HOST=localhost ghcr.io/shopwarelabs/testenv:6.6.0`
+- replace '6.6.0' with the latest tag found at https://github.com/shopwareLabs/testenv-platform/pkgs/container/testenv
+- Access shop at http://localhost/shop/public
+- Admin ("Beheer" in Dutch) at http://localhost/shop/public/admin#/login/
+- Admin credentials: 
+  - User: demo
+  - Password: demodemo
 
 If we want to retain and claim backward compatibility, we must repeat the test with alternative versions,
 e.g. by using Dockware Docker tags to rebuild our development environment. 
