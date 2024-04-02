@@ -3,6 +3,8 @@
 Inspired by potential customers' requirements and based on [Ingo Steinke](https://www.ingo-steinke.com/)'s [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), [IngoSCostTransparency (`sw-IngoSCostTransparency`)](https://github.com/openmindculture/sw-IngoSCostTransparency) is a free and open-source extension for Shopware 6 that adds optional additional product details
 as custom fields with responsive and accessible graphic percentage display on the product details.
 
+The extension adds a new tab on the product details page for data visualization of a product's cost factors, so we can show our customers where exactly their money goes to build trust and add facts to sustain our sustainability claims.
+
 Colors default to theme colors but can be modified by overwriting custom CSS properties.
 Label captions can be configured in the extension configuration.
 
@@ -10,9 +12,6 @@ Short and long descriptions in German and English, and descriptive screenshots f
 previewed in [marketplace-descriptions-and-screenshots.html](./marketplace-descriptions-and-screenshots.html)
 
 The content of the images/screenshots must be in English.
-
-TODO: add a more specific purpose / use case and detailled instructions for installation, usage, and test.
-
 
 ## Cost Transparency Display in the Storefront
 
@@ -61,9 +60,27 @@ The basic plugin version uses the following five percentage values per product:
 - value: integer `product.customFields.ingos_cost_transparency_percentage_04`
 - value: integer `product.customFields.ingos_cost_transparency_percentage_05`
 
+## Customizing the extension in another extension/theme
+
+Technically, the data is stored in custom product fields and global text snippets, so you can backup and modify this data in your own custom code.
+
+You can also use custom CSS to override the default bar chart colors, shadows, and layout defined in `product-detail.scss`, e.g.
+
+```css
+:root {
+    --ingos-cost-transparency-color-01: #f5e04d;
+    --ingos-cost-transparency-color-02: #3b9df9;
+    --ingos-cost-transparency-color-03: #45b571;
+    --ingos-cost-transparency-color-04: #e44a74;
+    --ingos-cost-transparency-color-05: #eebd57;
+}
+```
+
+![screenshot](./css-custom-properties.png)
+
 ## Compatibility and Contribution
 
-### Initial Release 1.0, March 2024
+### Initial Release 1.0, April 2024
 
 The storefront has been tested with the lastest major browsers, including Chrome, Firefox, Edge, and Safari, on desktop and mobile devices. Chromium, Vivaldi and Opera have also been tested successfully. The basic functionality should, but is not guaranteed, to work in other browsers like Internet Explorer and older Safari versions. The plugin has been tested with and released for Shopware 6.6, and it is probably backwards compatible with Shopware 6.5 for which it had initially been developed.
 
