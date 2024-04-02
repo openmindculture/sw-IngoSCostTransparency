@@ -75,11 +75,11 @@ export default class IngoSCostTransparency extends Plugin {
         if (!activeGroupElement) { console.log('no activeGroupElement'); return; }
         activeGroupElement.classList.add('ingos-active');
         const activeId = activeGroupElement.dataset.id;
-        const costGroupContentWrappers = document.getElementsByClassName('ingos-cost-group-contents');
-        console.log('costGroupContentWrappers:', costGroupContentWrappers);
-        for (let cgIndex = 0; cgIndex < costGroupContentWrappers.length; cgIndex++) {
-            let costGroupContentWrapper = costGroupContentWrappers.item(cgIndex);
-            const activeContent = costGroupContentWrapper.querySelector('*[data-for="' +  activeId + '"]');
+        const costDetailsWrappers = document.getElementsByClassName('ingos-cost-details');
+        console.log('costDetailsWrappers:', costDetailsWrappers);
+        for (let cgIndex = 0; cgIndex < costDetailsWrappers.length; cgIndex++) {
+            let costDetailsWrapper = costDetailsWrappers.item(cgIndex);
+            const activeContent = costDetailsWrapper.querySelector('*[data-for="' +  activeId + '"]');
             if (!activeContent) { continue; }
             activeContent.classList.add('ingos-active');
             console.log('added className ingos-active to activeContent', activeContent);
@@ -101,8 +101,8 @@ export default class IngoSCostTransparency extends Plugin {
 
             // .ingos-cost-group-contents .ingos-cost-group-content (ohne Eigenklasse, aber mit data-for=...)
             // cost-group-content are the details description elements below the bar charts
-            let activeGroup = document.getElementsByClassName('ingos-cost-group-content');
-            console.log('activeGroup = .ingos-cost-group-content : ', activeGroup);
+            let activeGroup = document.getElementsByClassName('ingos-cost-detail');
+            console.log('activeGroup = .ingos-cost-detail : ', activeGroup);
             for (let i = 0; i < activeGroup.length; i++) {
                 console.log(`try to compare if activeGroup.item(${i}) !== activeContent`);
                 console.log('activeContent:', activeContent);

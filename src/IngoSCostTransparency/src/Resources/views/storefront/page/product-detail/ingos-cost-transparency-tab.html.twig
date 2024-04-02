@@ -55,11 +55,11 @@
             </noscript>
         </div>
 
-        <div class="ingos-cost-group-contents" id="ingos-cost-group-contents">
+        <div class="ingos-cost-details">
             {% for i in 1..5 %}
                 {% set descriptionSnippetSlug = 'ingos.costTransparency.costFactorDescription0' ~ i %}
                 <div
-                    class="ingos-cost-group-content{% if i == 1 %} ingos-active{% endif %}"
+                    class="ingos-cost-detail{% if i == 1 %} ingos-active{% endif %}"
                     data-for="ingos-cost-group-0{{ i }}"
                 >{{ descriptionSnippetSlug | trans | sw_sanitize }}
                 </div>
