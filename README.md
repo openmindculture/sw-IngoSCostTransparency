@@ -233,3 +233,5 @@ We can use a service like BrowserStack to verify functionality in different devi
 We can add an alternative host name, like `bs-local.com` in the storefront configuration.
 
 ![settings screenshot](storefront-testing-dutch-bs-local.png)
+
+A similar test environment might be available as a one-click installation after uploading the extension for code review.
