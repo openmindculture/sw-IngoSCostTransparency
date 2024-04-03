@@ -62,7 +62,14 @@
     cursor: pointer;
 
     .ingos-cost-group-bar {
-      background-color: silver; /* fallback style */
+      background-color: silver; /* fallback style will be overridden */
+      height: 3rem;
+      border-radius: 0.25rem;
+      box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
+    }
+
+    &.ingos-active > .ingos-cost-group-bar {
+      box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.5);
     }
 
     .ingos-cost-group-bar-01 {
@@ -140,16 +147,6 @@
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-    }
-
-    .ingos-cost-group-bar {
-      height: 3rem;
-      border-radius: 0.25rem;
-      box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
-    }
-
-    &.ingos-active > .ingos-cost-group-bar {
-      box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.5);
     }
   }
 }
