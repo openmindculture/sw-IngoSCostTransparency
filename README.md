@@ -1,13 +1,23 @@
-# Ingo's Cost Transparency for Shopware 6
+# Cost Transparency for Shopware 6
 
 Inspired by potential customers' requirements and based on [Ingo Steinke](https://www.ingo-steinke.com/)'s [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), [IngoSCostTransparency (`sw-IngoSCostTransparency`)](https://github.com/openmindculture/sw-IngoSCostTransparency) is a free and open-source extension for Shopware 6 that adds optional additional product details
 as custom fields with responsive and accessible graphic percentage display on the product details.
 
-TODO: add a more specific purpose / use case!
+The extension adds a new tab on the product details page for data visualization of a product's cost factors, so we can show our customers where exactly their money goes to build trust and add facts to sustain our sustainability claims.
 
-Colors default to theme colors but can be modified by overwriting custom CSS properties. Label captions can be configured in the extension configuration.
+Colors default to theme colors but can be modified by overwriting custom CSS properties.
+Label captions can be configured in the extension configuration.
 
-There is a short [German description](./LIESMICH.md).
+Short and long descriptions in German and English, and descriptive screenshots for the extension marketplace can be
+previewed in [marketplace-descriptions-and-screenshots.html](./marketplace-descriptions-and-screenshots.html)
+
+The content of the images/screenshots must be in English.
+
+## Cost Transparency Display in the Storefront
+
+The layout is responsive and accessible. Mobile content will be displayed off canvas like the built-in description and reviews tabs. Tablet and mobile views show column rows, while wide desktop screens show columns. Captions of small columns will be shortened. The full caption is available in a title tag. Simple HTML markup is possible in captions, like using bold tags or list items.
+
+![screenshot collage](./product-cost-percentage-transparency.png)
 
 ## Configuration
 
@@ -20,12 +30,6 @@ To configure the plugin's labels and visibility, open the Administration and go 
 Custom fields can be found an edited in the "Specifications" tab of each product.
 
 ![screenshot](./product-fields-editor.png)
-
-## Storefront Display
-
-The layout is responsive and accessible. Mobile content will be displayed off canvas like the built-in description and reviews tabs. Tablet and mobile views show column rows, while wide desktop screens show columns. Captions of small columns will be shortened. The full caption is available in a title tag. Simple HTML markup is possible in captions, like using bold tags or list items.
-
-![screenshot collage](./product-cost-percentage-transparency.png)
 
 ## Usage, Notes, and Caveats
 
@@ -56,9 +60,27 @@ The basic plugin version uses the following five percentage values per product:
 - value: integer `product.customFields.ingos_cost_transparency_percentage_04`
 - value: integer `product.customFields.ingos_cost_transparency_percentage_05`
 
+## Customizing the extension in another extension/theme
+
+Technically, the data is stored in custom product fields and global text snippets, so you can backup and modify this data in your own custom code.
+
+You can also use custom CSS to override the default bar chart colors, shadows, and layout defined in `product-detail.scss`, e.g.
+
+```css
+:root {
+    --ingos-cost-transparency-color-01: #f5e04d;
+    --ingos-cost-transparency-color-02: #3b9df9;
+    --ingos-cost-transparency-color-03: #45b571;
+    --ingos-cost-transparency-color-04: #e44a74;
+    --ingos-cost-transparency-color-05: #eebd57;
+}
+```
+
+![screenshot](./css-custom-properties.png)
+
 ## Compatibility and Contribution
 
-### Initial Release 1.0, March 2024
+### Initial Release 1.0, April 2024
 
 The storefront has been tested with the lastest major browsers, including Chrome, Firefox, Edge, and Safari, on desktop and mobile devices. Chromium, Vivaldi and Opera have also been tested successfully. The basic functionality should, but is not guaranteed, to work in other browsers like Internet Explorer and older Safari versions. The plugin has been tested with and released for Shopware 6.6, and it is probably backwards compatible with Shopware 6.5 for which it had initially been developed.
 
@@ -172,3 +194,42 @@ Pragmatically, we could delete the `vendor` directory before creating the zip di
 Now we created the file `custom/plugins/dist_tmp/IngoSCostTransparency.zip` which is visible as
 `src/dist_tmp/IngoSCostTransparency.zip` outside the container and could be moved to `dist`:
 - `sudo mv src/dist_tmp/* dist` to commit it in this development repository.
+
+### Official Testing Environment and Checklist
+
+Specific validation rules are listed in the official plugin quality guidelines checklist:
+
+https://developer.shopware.com/docs/resources/guidelines/testing/store/quality-guidelines-plugins/
+
+To do after every update:
+- validate the plugin against the checklist (manually)
+- run all available validations, checks and audits (e.g. using `shopware-cli` which obsoletes the `FroshPluginUploader`)
+- build an updated release file inside the development container (see above)
+- stop the development container
+- run the testing container (see below)
+- upload and install the release file in the testing container
+- repeat all manual test steps and ensure that the documentation matches the actual behavior
+- uninstall, reinstall and re-test the plugin (twice, with or without "delete all data")
+
+There is an official testing environment built with Docker, used by Shopware
+for validating plugins. Their setup includes some of the typical gotchas like subdirectory paths and a nonstandard
+storefront language (Dutch). It always uses the latest 6.x Shopware release.
+
+- `docker run --rm -p 80:80 -e VIRTUAL_HOST=localhost ghcr.io/shopwarelabs/testenv:6.6.0`
+- replace '6.6.0' with the latest tag found at https://github.com/shopwareLabs/testenv-platform/pkgs/container/testenv
+- Access shop at http://localhost/shop/public
+- Admin ("Beheer" in Dutch) at http://localhost/shop/public/admin#/login/
+- Admin credentials: 
+  - User: demo
+  - Password: demodemo
+
+If we want to retain and claim backward compatibility, we must repeat the test with alternative versions,
+e.g. by using Dockware Docker tags to rebuild our development environment.
+
+#### Cross-Device / Mobile Testing
+
+We can use a service like BrowserStack to verify functionality in different devices.
+
+We can add an alternative host name, like `bs-local.com` in the storefront configuration.
+
+![settings screenshot](storefront-testing-dutch-bs-local.png)

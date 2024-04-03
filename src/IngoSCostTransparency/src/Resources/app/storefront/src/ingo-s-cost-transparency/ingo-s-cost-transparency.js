@@ -2,13 +2,24 @@ import Plugin from 'src/plugin-system/plugin.class';
 
 export default class IngoSCostTransparency extends Plugin {
     init() {
-        this.addAnimationEffectClassNames();
         this.applyPercentageStyles();
+        this.addEffectsAndSwitchDetailsHandler();
+        // same for mobile off-canvas version:
+        const tabElement = document.querySelector('#ingos-cost-transparency-tab');
+        if (tabElement &&
+            tabElement.$emitter &&
+            tabElement.$emitter.subscribe &&
+            typeof tabElement.$emitter.subscribe === 'function'
+        ) {
+            tabElement.$emitter.subscribe('onClickOffCanvasTab', () => {
+                this.addEffectsAndSwitchDetailsHandler();
+            })
+        }
     }
-    addAnimationEffectClassNames() {
+    addEffectsAndSwitchDetailsHandler() {
         const animatableElements = document.querySelectorAll('.ingos-cost-group');
         for (let i=0; i < animatableElements.length; i++) {
-            animatableElements[i].addEventListener('click', this.costGroupEnterHandler);
+            animatableElements[i].addEventListener('click', this.addEffectsAndSwitchDetails);
         }
     }
 
@@ -24,27 +35,32 @@ export default class IngoSCostTransparency extends Plugin {
             }
         }
     }
-    costGroupEnterHandler(event) {
+    addEffectsAndSwitchDetails(event) {
         if (!event) { return; }
         const activeGroupElement = event.currentTarget;
+        if (!activeGroupElement) { return; }
         activeGroupElement.classList.add('ingos-active');
-        const activeId = activeGroupElement.id;
-        const costGroupContentWrapper = document.getElementById('ingos-cost-group-contents');
-        if (!costGroupContentWrapper) { return; }
-        const activeContent = costGroupContentWrapper.querySelector('*[data-for="' +  activeId + '"]');
-        if (!activeContent) { return; }
-        activeContent.classList.add('ingos-active');
+        const activeId = activeGroupElement.dataset.id;
+        const costDetailsWrappers = document.getElementsByClassName('ingos-cost-details');
 
-        const inactiveGroups = document.getElementsByClassName('ingos-cost-group');
-        for (let i = 0; i < inactiveGroups.length; i++) {
-            if (inactiveGroups.item(i) !== activeGroupElement) {
-                inactiveGroups.item(i).classList.remove('ingos-active');
+        for (let cgIndex = 0; cgIndex < costDetailsWrappers.length; cgIndex++) {
+            let costDetailsWrapper = costDetailsWrappers.item(cgIndex);
+            const activeContent = costDetailsWrapper.querySelector('*[data-for="' +  activeId + '"]');
+            if (!activeContent) { continue; }
+            activeContent.classList.add('ingos-active');
+
+            const costGroups = document.getElementsByClassName('ingos-cost-group');
+            for (let i = 0; i < costGroups.length; i++) {
+                if (costGroups.item(i) !== activeGroupElement) {
+                    costGroups.item(i).classList.remove('ingos-active');
+                }
             }
-        }
-        let activeGroup = document.getElementsByClassName('ingos-cost-group-content');
-        for (let i = 0; i < activeGroup.length; i++) {
-            if (activeGroup.item(i) !== activeContent) {
-                activeGroup.item(i).classList.remove('ingos-active');
+
+            let costDetails = document.getElementsByClassName('ingos-cost-detail');
+            for (let i = 0; i < costDetails.length; i++) {
+                if (costDetails.item(i) !== activeContent) {
+                    costDetails.item(i).classList.remove('ingos-active');
+                }
             }
         }
     }
