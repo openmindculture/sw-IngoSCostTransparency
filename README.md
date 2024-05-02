@@ -3,7 +3,10 @@
 Inspired by potential customers' requirements and based on [Ingo Steinke](https://www.ingo-steinke.com/)'s [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), [IngoSCostTransparency (`sw-IngoSCostTransparency`)](https://github.com/openmindculture/sw-IngoSCostTransparency) is a free and open-source extension for Shopware 6 that adds optional additional product details
 as custom fields with responsive and accessible graphic percentage display on the product details.
 
-The extension adds a new tab on the product details page for data visualization of a product's cost factors, so we can show our customers where exactly their money goes to build trust and add facts to sustain our sustainability claims.
+The cost transparency extension has been approved and released in the official Shopware store:
+https://store.shopware.com/en/ingos57544164693f/cost-transparency.html
+
+This Shopware 6 extension adds a new tab on the product details page for data visualization of a product's cost factors, so we can show our customers where exactly their money goes to build trust and add facts to sustain our sustainability claims.
 
 Colors default to theme colors but can be modified by overwriting custom CSS properties.
 Label captions can be configured in the extension configuration.
