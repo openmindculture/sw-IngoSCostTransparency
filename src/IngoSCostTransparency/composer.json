@@ -1,6 +1,6 @@
 {
   "name": "ingo-s/ingo-s-cost-transparency",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "shopware-platform-plugin",
   "description": "Cost Transparency",
   "keywords": ["shopware", "storefront", "custom-fields", "product-details", "tabs"],
