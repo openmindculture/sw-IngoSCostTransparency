@@ -103,7 +103,7 @@ container repository anymore! `custom/plugins` is now mounted to the project `sr
 
 ### Start the Shopware Development Container
 
-- `docker-compose up -d`
+- `docker compose up -d`
 
 ### Open the Storefront or Administration in a Browser
 
