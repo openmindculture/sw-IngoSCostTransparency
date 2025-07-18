@@ -11,11 +11,6 @@ This Shopware 6 extension adds a new tab on the product details page for data vi
 Colors default to theme colors but can be modified by overwriting custom CSS properties.
 Label captions can be configured in the extension configuration.
 
-Short and long descriptions in German and English, and descriptive screenshots for the extension marketplace can be
-previewed in [marketplace-descriptions-and-screenshots.html](./marketplace-descriptions-and-screenshots.html)
-
-The content of the images/screenshots must be in English.
-
 ## Cost Transparency Display in the Storefront
 
 The layout is responsive and accessible. Mobile content will be displayed off canvas like the built-in description and reviews tabs. Tablet and mobile views show column rows, while wide desktop screens show columns. Captions of small columns will be shortened. The full caption is available in a title tag. Simple HTML markup is possible in captions, like using bold tags or list items.
@@ -87,6 +82,12 @@ You can also use custom CSS to override the default bar chart colors, shadows, a
 
 The storefront has been tested with the lastest major browsers, including Chrome, Firefox, Edge, and Safari, on desktop and mobile devices. Chromium, Vivaldi and Opera have also been tested successfully. The basic functionality should, but is not guaranteed, to work in other browsers like Internet Explorer and older Safari versions. The plugin has been tested with and released for Shopware 6.6, and it is probably backwards compatible with Shopware 6.5 for which it had initially been developed.
 
+Consult the [CHANGELOG](CHANGELOG.md) for a full changelog including intermediate releases.
+
+### Compatibility Release 2.0, July 2025
+
+Shopware dropped support for PHP 7, and Shopware 6.7 switched from Webpack to Vite. The July 2025 compatibility release makes sure that the extension still works with Shopware 6.7 and above.
+
 ### Contribution
 
 You can open issues and pull requests [on GitHub](https://github.com/openmindculture/sw-IngoSCostTransparency).
@@ -141,15 +142,23 @@ We might need to grant them expicitly by a command like
 
 ### Stop the Container
 
-- `docker-compose stop`
+- `docker compose stop`
 
 ### Remove the Container
 
-- `docker-compose down -v` (-v will remove created volumes)
+- `docker compose down -v` (-v will remove created volumes)
 
 ### Update Shopware version by updating Dockware
 
 - `docker pull shopware/dev`
+
+or specifcy a specific Docker tag in `docker-compose.yml` e.g.
+
+```
+services:
+  shopware:
+    image: dockware/dev:6.7.0.1
+```
 
 ## Logfile Locations
 
@@ -173,7 +182,7 @@ We might need to grant them expicitly by a command like
 
 - then "mark directory as" -> "sources root"
 
-### Extension Export and Verification
+### Plugin/Extension Export and Verification
 
 Last but not least, you can build an exportable zip archive file to upload into a shop backend or Shopware's extension
 marketplace.
@@ -214,12 +223,12 @@ To do after every update:
 - repeat all manual test steps and ensure that the documentation matches the actual behavior
 - uninstall, reinstall and re-test the plugin (twice, with or without "delete all data")
 
-There is an official testing environment built with Docker, used by Shopware
+There is (or was?) an official testing environment built with Docker, used by Shopware
 for validating plugins. Their setup includes some of the typical gotchas like subdirectory paths and a nonstandard
 storefront language (Dutch). It always uses the latest 6.x Shopware release.
 
 - `docker run --rm -p 80:80 -e VIRTUAL_HOST=localhost ghcr.io/shopwarelabs/testenv:6.6.0`
-- replace '6.6.0' with the latest tag found at https://github.com/shopwareLabs/testenv-platform/pkgs/container/testenv
+- replace '6.6.0' with the latest tag
 - Access shop at http://localhost/shop/public
 - Admin ("Beheer" in Dutch) at http://localhost/shop/public/admin#/login/
 - Admin credentials: 

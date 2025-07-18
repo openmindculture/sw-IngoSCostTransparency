@@ -2,8 +2,23 @@
 
 # IngoSCostTransparency for Shopware 6
 
-## 1.0.1 - 2024-06-10
+## [2.0.0] Shopware 6.7 Compatibility - 2025-07-18
+
+### Changed
+
+- drop PHP 7 support
+- ensure Vite build compatibility
+- ensure Shopware 6.7 compatibility
+- enhance documentation
+
+## [1.0.1] - 2024-06-10
+
+### Changed
+
 - increase icon size in metadata for new extension store
 
-## 1.0.0 - 2024-04-04
+## [1.0.0] - 2024-04-04
+
+### Added
+
 - initial release
