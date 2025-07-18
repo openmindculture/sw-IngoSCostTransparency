@@ -22,7 +22,7 @@
     }
   },
   "require": {
-    "php": "^7.4 || ^8.2",
+    "php": ">=8.2",
     "ext-simplexml": "*"
   },
   "autoload": {
