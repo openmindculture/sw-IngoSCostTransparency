@@ -38,7 +38,7 @@
     }
   },
   "require": {
-    "shopware/core": "~6.7.1",
-    "shopware/storefront": "~6.7.1"
+    "shopware/core": "~6.7.0",
+    "shopware/storefront": "~6.7.0"
   }
 }
