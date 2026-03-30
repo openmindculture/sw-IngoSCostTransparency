@@ -1,15 +1,25 @@
 # Cost Transparency for Shopware 6
 
-Inspired by potential customers' requirements and based on [Ingo Steinke](https://www.ingo-steinke.com/)'s [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), [IngoSCostTransparency (`sw-IngoSCostTransparency`)](https://github.com/openmindculture/sw-IngoSCostTransparency) is a free and open-source extension for Shopware 6 that adds optional additional product details
+Inspired by potential customers' requirements and originally based on [Ingo Steinke](https://www.ingo-steinke.com/)'s Shopware 6 Theme/Plugin Development Template, [IngoSCostTransparency (`sw-IngoSCostTransparency`)](https://github.com/openmindculture/sw-IngoSCostTransparency) is a free and open-source extension for Shopware 6 that adds optional additional product details
 as custom fields with responsive and accessible graphic percentage display on the product details.
+
+### Overview
+
+#### Download and Installation
 
 The cost transparency extension has been approved and released in the official Shopware store:
 https://store.shopware.com/en/ingos57544164693f/cost-transparency.html
 
-This Shopware 6 extension adds a new tab on the product details page for data visualization of a product's cost factors, so we can show our customers where exactly their money goes to build trust and add facts to sustain our sustainability claims.
+Alternatively, you can download, install and activate the latest free release from GitHub. This enables unregistered Shopware community instances and DevOps deployments to use the extension without logging into the Shopware extension store. 
 
-Colors default to theme colors but can be modified by overwriting custom CSS properties.
-Label captions can be configured in the extension configuration.
+#### Functionality and Purpose
+
+The Cost Transparency Shopware 6 extension adds a new tab to the product details page for data visualization of a product's cost factors, so that merchants can show their customers where exactly their money goes to build trust and add facts to sustain our sustainability claims.
+
+#### Customization
+
+- Colors default to theme colors but can be modified by overwriting custom CSS properties.
+- Label captions can be configured in the extension configuration.
 
 ## Cost Transparency Display in the Storefront
 
@@ -76,17 +86,17 @@ You can also use custom CSS to override the default bar chart colors, shadows, a
 
 ![screenshot](./css-custom-properties.png)
 
-## Compatibility and Contribution
-
-### Initial Release 1.0, April 2024
-
-The storefront has been tested with the lastest major browsers, including Chrome, Firefox, Edge, and Safari, on desktop and mobile devices. Chromium, Vivaldi and Opera have also been tested successfully. The basic functionality should, but is not guaranteed, to work in other browsers like Internet Explorer and older Safari versions. The plugin has been tested with and released for Shopware 6.6, and it is probably backwards compatible with Shopware 6.5 for which it had initially been developed.
+## Changelog, Compatibility and Contribution
 
 Consult the [CHANGELOG](CHANGELOG.md) for a full changelog including intermediate releases.
 
 ### Compatibility Release 2.0, July 2025
 
 Shopware dropped support for PHP 7, and Shopware 6.7 switched from Webpack to Vite. The July 2025 compatibility release makes sure that the extension still works with Shopware 6.7 and above.
+
+### Initial Release 1.0, April 2024
+
+The storefront has been tested with the lastest major browsers, including Chrome, Firefox, Edge, and Safari, on desktop and mobile devices. Chromium, Vivaldi and Opera have also been tested successfully. The basic functionality should, but is not guaranteed, to work in other browsers like Internet Explorer and older Safari versions. The plugin has been tested with and released for Shopware 6.6, and it is probably backwards compatible with Shopware 6.5 for which it had initially been developed.
 
 ### Contribution
 
