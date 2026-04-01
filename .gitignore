@@ -10,3 +10,6 @@ Desktop.ini
 .DS_Store
 sw_platform_src
 src/SwagExtensionStore
+src/IngoSOpenMindCultureTheme
+checksum.json
+dist~
