@@ -41,6 +41,36 @@ Component.override('sw-form-field-renderer', {
             }
 
             return props;
+        },
+
+        bind() { console.log('bind');
+            // 1. Get the base properties from the original renderer
+            const bind = this.$super('bind');
+
+            // 2. Identify the field using the config name from config.xml
+            // const fieldName = this.$attrs.config?.name;
+            const fieldName = this.$attrs.name;
+            console.log('fieldName (this $attrs.name)', fieldName);
+
+            // 3. Match your prefix and target the product editor specifically
+            const isProductEditor = this.$route.name?.includes('sw.product.detail');
+            const isMyField = fieldName?.startsWith('ingos_cost_transparency_percentage');
+
+            if (isProductEditor && isMyField) {
+                // ingos_cost_transparency_percentage_01
+                // ingos.costTransparency.costFactorLabel01
+                const settingKey = fieldName.replace('ingos_cost_transparency_percentage_', 'ingos.costTransparency.costFactorLabel');
+                const dynamicValue = this.pluginConfig[settingKey];
+                console.log('dynamicValue', dynamicValue);
+                if (dynamicValue) {
+                    // 4. Update the label.
+                    // We use this.$t to ensure we translate the original label first.
+                    const baseLabel = this.$t(this.config.label || bind.label);
+                    bind.label = `${baseLabel} (${dynamicValue})`;
+
+                    console.log(`Label updated for ${fieldName}:`, bind.label);
+                }
+            }
         }
     }
 });
