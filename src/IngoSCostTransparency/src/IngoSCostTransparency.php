@@ -7,6 +7,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
+use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Core\System\CustomField\CustomFieldTypes;
 
 class IngoSCostTransparency extends Plugin
@@ -45,10 +46,16 @@ class IngoSCostTransparency extends Plugin
                     [
                         'name' => self::CUSTOM_FIELD_01_NAME,
                         'type' => CustomFieldTypes::INT,
+                        'componentName' => 'sw-field',
                         'config' => [
                             'label' => [
                                 'de-DE' => 'Kostenfaktor 1 Prozentsatz',
                                 'en-GB' => 'cost factor 1 percentage',
+                                Defaults::LANGUAGE_SYSTEM => 'cost factor 1 percentage',
+                            ],
+                            'helpText' => [
+                                'en-GB' => 'This text will appear in the product tooltip.',
+                                'de-DE' => 'Dieser Text erscheint im Produkt-Tooltip.',
                                 Defaults::LANGUAGE_SYSTEM => 'cost factor 1 percentage',
                             ],
                             'type' => 'number',
@@ -146,6 +153,34 @@ class IngoSCostTransparency extends Plugin
             ],
         ];
         $customFieldSetRepository->upsert($productData, $installContext->getContext());
+    }
+
+    public function uninstall(UninstallContext $uninstallContext): void
+    {
+        parent::uninstall($uninstallContext);
+
+        // This is the "Safety Switch"
+        // If the user UNCHECKED "Delete all data", we stop here.
+        if ($uninstallContext->keepUserData()) {
+            return;
+        }
+
+        // 1. Get the repository for custom field sets
+        $fieldSetRepository = $this->container->get('custom_field_set.repository');
+
+        // 2. Find your set by its technical name
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('name', 'ingos_cost_transparency'));
+
+        $ids = $fieldSetRepository->searchIds($criteria, $uninstallContext->getContext())->getIds();
+
+        // 3. Delete the set (this automatically deletes the fields inside it)
+        if (!empty($ids)) {
+            $fieldSetRepository->delete(
+                array_map(fn($id) => ['id' => $id], $ids),
+                $uninstallContext->getContext()
+            );
+        }
     }
 
     private function customFieldExists($context): bool
