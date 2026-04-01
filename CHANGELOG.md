@@ -2,6 +2,15 @@
 
 # IngoSCostTransparency for Shopware 6
 
+## [2.2.0] Shopware 6.7 Compatibility - 2025-07-18
+
+### Changed
+
+- capitalize field label text in admin #7
+- descriptive text for cost factor N percentage field #7
+- fallbacks to default colors #8
+- fallbacks to main language values #9
+
 ## [2.0.1] Shopware 6.7 Compatibility - 2025-07-22
 
 ### Changed

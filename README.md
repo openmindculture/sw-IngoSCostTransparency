@@ -39,6 +39,8 @@ Custom fields can be found an edited in the "Specifications" tab of each product
 
 ![screenshot](./product-fields-editor.png)
 
+The generic default text, "cost factor 1 percentage", will include the configured caption (e.g. "logistics") after the configuration has been saved.
+
 ## Usage, Notes, and Caveats
 
 In the basic plugin version, up to five different cost factors can be defined per product, using the labels defined in the extension settings. If any values are set, an additional data visualization tab will be shown on the product details  page using a bar chart with percentage sizes. Please note: using multiple values below 10% might compromise readability.  It is possible to use HTML in the description blocks for each cost factor.
@@ -86,13 +88,23 @@ You can also use custom CSS to override the default bar chart colors, shadows, a
 
 ![screenshot](./css-custom-properties.png)
 
+The [Open Mind Culture Theme](https://github.com/openmindculture/sw-IngoSOpenMindCultureTheme) used at [shop.open-mind-culture.org](https://shop.open-mind-culture.org/) is a customization example.
+
 ## Changelog, Compatibility and Contribution
 
 Consult the [CHANGELOG](CHANGELOG.md) for a full changelog including intermediate releases.
 
+### Usability Release 2.2, April 2026
+
+**Storefront**: fallbacks to default colors ([#8](https://github.com/openmindculture/sw-IngoSCostTransparency/issues/8)), and to main language field values ([#9](https://github.com/openmindculture/sw-IngoSCostTransparency/issues/9)) avoid broken output.
+
+**Admin**: input fields in the admin editor now show the respective labels instead of just generic cost factor numbers. Field labels are capitalized for consistency with other admin input fields ([#7](https://github.com/openmindculture/sw-IngoSCostTransparency/issues/7)).
+
+**Compatibility**: This update (2.2.0) has been tested with Shopware 6.7.2.2 and 6.7.8.2 and should not introduce any breaking changes.
+
 ### Compatibility Release 2.0, July 2025
 
-Shopware dropped support for PHP 7, and Shopware 6.7 switched from Webpack to Vite. The July 2025 compatibility release makes sure that the extension still works with Shopware 6.7 and above.
+Shopware dropped support for PHP 7, and Shopware 6.7 switched from Webpack to Vite. The July 2025 compatibility update makes sure that the extension still works with Shopware 6.7 and above.
 
 ### Initial Release 1.0, April 2024
 
@@ -107,7 +119,7 @@ You can open issues and pull requests [on GitHub](https://github.com/openmindcul
 ### Dockware Development Environment
 
 Thanks to [dasistweb](https://www.dasistweb.de/), the Docker-based [dockware](https://docs.dockware.io/) containers provide a useful alternative to Shopware's
-nixOS/flex/[devenv-based approach](https://developer.shopware.com/docs/guides/installation/devenv.html). The setup is based on the lastest dev image. We don't need no parent project
+nixOS/flex/[devenv-based approach](https://developer.shopware.com/docs/guides/installation/devenv.html). The setup is based on the latest dev image. We don't need no parent project
 container repository anymore! `custom/plugins` is now mounted to the project `src` directory as recommended in the
 [dockware example files on GitHub](https://github.com/dockware/examples).
 
