@@ -1,79 +1,39 @@
-import template from './sw-form-field-renderer.html.twig';
-
 const { Component } = Shopware;
 
 Component.override('sw-form-field-renderer', {
+    inject: ['systemConfigApiService'],
+    data() {
+        return {
+            // Initialize as an empty string or null
+            pluginConfig: {}
+        };
+    },
+    async created() {
+        // run once per component not per field to
+        // Fetch all settings for your plugin domain once
+        // FIX: We define 'config' right here as the result of the await
+        const config = await this.systemConfigApiService.getValues('IngoSCostTransparency.config');
+
+        // Save the result to our data property
+        this.pluginConfig = config;
+    },
     computed: {
-        bind() {
-            // Get the original bind properties from the parent
+        bind() { // runs once per field
             const bind = this.$super('bind');
-
-            // Check if the current ADMIN route is the product detail page
             const isProductEditor = this.$route.name === 'sw.product.detail.base';
-
-            // Check if the field belongs to your set
             const isMyField = this.config?.name?.startsWith('IngoSCostTransparency.');
-
-
-            // Identify your field by its technical name
-            // 'this.config.name' matches the name used when creating the custom field
             if (isProductEditor && isMyField)  {
-
-                // Inject the tooltip text dynamically.
-                // This is only a UI-layer change and never touches the database.
-                bind.helpText = this.$t(this.config.name);
+                const settingKey = `IngoSCostTransparency.config.${this.config.name}`;
+                const tooltipFromConfig = this.pluginConfig[settingKey];
+                const tooltipValue = tooltipFromConfig || this.$t(this.config.name);
+                bind.helpText = tooltipValue;
+                if (!bind.config) {
+                    bind.config = {};
+                }
+                bind.config.helpText = tooltipValue;
             }
-
+            console.log('return bind', bind);
             return bind;
         }
     }
-});
-
-
-Shopware.Component.override('sw-form-field-renderer', {
-    template,
-    inject: ['systemConfigApiService'],
-
-    data() {
-        return { pluginCaptions: {} };
-    },
-
-    async created() {
-        console.log('sw-form-field-renderer override loaded');
-        const config = await this.systemConfigApiService
-            .getValues('IngoSCostTransparency.config');
-        console.log('plugin config:', config);
-
-        this.pluginCaptions = {
-            'ingos_cost_transparency_custom_field_01': config['IngoSCostTransparency.config.snippetFieldCostFactorLabel01'],
-            'ingos_cost_transparency_custom_field_02': config['IngoSCostTransparency.config.snippetFieldCostFactorLabel02'],
-            'ingos_cost_transparency_custom_field_03': config['IngoSCostTransparency.config.snippetFieldCostFactorLabel03'],
-            'ingos_cost_transparency_custom_field_04': config['IngoSCostTransparency.config.snippetFieldCostFactorLabel04'],
-            'ingos_cost_transparency_custom_field_05': config['IngoSCostTransparency.config.snippetFieldCostFactorLabel05'],
-        };
-    },
-
-
-    computed: {
-        myCustomSettingValue() {
-            // Example: Accessing a plugin configuration
-            return 'Your dynamic setting value here';
-        },
-        bind() {
-            const bind = this.$super('bind');
-            if (this.config?.name?.startsWith('my_custom_set.') && this.myPluginTooltip) {
-                bind.helpText = this.myPluginTooltip;
-            }
-            console.log('computed bind', bind)
-            return bind;
-            /*
-            const fieldName = this.$attrs?.name || this.config?.name;
-            const caption = this.pluginCaptions[fieldName];
-
-            if (caption) {
-                bind.helpText = caption;
-            }
-            */
-        },
-    },
 });
