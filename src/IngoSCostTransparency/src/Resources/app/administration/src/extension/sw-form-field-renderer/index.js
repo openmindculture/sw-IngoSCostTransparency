@@ -18,22 +18,29 @@ Component.override('sw-form-field-renderer', {
         this.pluginConfig = config;
     },
     computed: {
-        bind() { // runs once per field
-            const bind = this.$super('bind');
+        fieldBind() {
+            console.log('fieldBind');
+            // 1. Get the base properties used for the internal input field
+            const bind = this.$super('fieldBind') || {};
+
+            // 1. Get the technical name of the current field (e.g., snippetFieldCostFactorLabel01)
+            const fieldName = this.$attrs.name;
+
             const isProductEditor = this.$route.name === 'sw.product.detail.base';
+
             const isMyField = this.config?.name?.startsWith('IngoSCostTransparency.');
             if (isProductEditor && isMyField)  {
                 const settingKey = `IngoSCostTransparency.config.${this.config.name}`;
-                const tooltipFromConfig = this.pluginConfig[settingKey];
-                const tooltipValue = tooltipFromConfig || this.$t(this.config.name);
-                bind.helpText = tooltipValue;
-                if (!bind.config) {
-                    bind.config = {};
+                const configuredCaption = this.pluginConfig[settingKey];
+                if (configuredCaption) {
+                    props.label = `${this.$t(this.label)} (${configuredCaption})`;
+                    console.log('changed label');
+                } else {
+                    console.log('no value to change label');
                 }
-                bind.config.helpText = tooltipValue;
             }
-            console.log('return bind', bind);
-            return bind;
+
+            return props;
         }
     }
 });
