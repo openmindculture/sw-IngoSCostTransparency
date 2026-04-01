@@ -18,34 +18,17 @@ Component.override('sw-form-field-renderer', {
         this.pluginConfig = config;
     },
     computed: {
-        fieldBind() {
-            console.log('fieldBind');
-            // 1. Get the base properties used for the internal input field
-            const bind = this.$super('fieldBind') || {};
-
-            // 1. Get the technical name of the current field (e.g., snippetFieldCostFactorLabel01)
-            const fieldName = this.$attrs.name;
-
-            const isProductEditor = this.$route.name === 'sw.product.detail.base';
-
-            const isMyField = this.config?.name?.startsWith('IngoSCostTransparency.');
-            if (isProductEditor && isMyField)  {
-                const settingKey = `IngoSCostTransparency.config.${this.config.name}`;
-                const configuredCaption = this.pluginConfig[settingKey];
-                if (configuredCaption) {
-                    props.label = `${this.$t(this.label)} (${configuredCaption})`;
-                    console.log('changed label');
-                } else {
-                    console.log('no value to change label');
-                }
-            }
-
-            return props;
-        },
-
         bind() { console.log('bind');
             // 1. Get the base properties from the original renderer
             const bind = this.$super('bind');
+
+            // 2. GUARD: If pluginConfig is still empty, return the original bind object
+            // This prevents errors and ensures the UI shows the default label initially
+            if (!this.pluginConfig || Object.keys(this.pluginConfig).length === 0) {
+                console.log('pluginConfig not ready yet');
+                return bind;
+            }
+            console.log('pluginConfig is ready now');
 
             // 2. Identify the field using the config name from config.xml
             // const fieldName = this.$attrs.config?.name;
