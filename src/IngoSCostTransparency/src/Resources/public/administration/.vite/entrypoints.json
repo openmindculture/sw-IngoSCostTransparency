@@ -1,0 +1,23 @@
+{
+  "base": "/bundles/ingoscosttransparency/administration/",
+  "entryPoints": {
+    "ingo-s-cost-transparency": {
+      "css": [],
+      "dynamic": [],
+      "js": [
+        "/bundles/ingoscosttransparency/administration/assets/ingo-s-cost-transparency-CVpuXQLE.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}

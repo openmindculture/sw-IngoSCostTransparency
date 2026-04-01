@@ -1,0 +1,14 @@
+{% block sw_form_field_renderer_inner %}
+    <template v-if="config && config.name && config.name.startsWith('IngoSCostTransparency.')">
+        <div class="my-custom-styled-wrapper">
+            {% parent() %}
+            <p class="custom-help-text">This message appears for all fields in 'my_custom_set'</p>
+            <p v-if="pluginCaptions" class="custom-help-text">
+                {{ pluginCaptions }}
+            </p>
+        </div>
+    </template>
+    <template v-else>
+        {% parent() %}
+    </template>
+{% endblock %}

@@ -192,7 +192,36 @@ services:
 
 - `/var/log`
 
-### Shopware Platform Source Code in Dockware
+## Troubleshooting/Debugging Tips
+
+### Verify built and registered resources
+
+Show exactly what Shopware registered for your plugin:
+
+- `cat var/plugins.json | python3 -m json.tool | grep -A 10 -i "ingo\|cost"`
+
+outputs something like
+
+```json
+    "IngoSCostTransparency": {
+        "basePath": "/var/www/html/custom/plugins/IngoSCostTransparency/src/",
+        "views": [
+            "Resources/views"
+        ],
+        "technicalName": "ingo-s-cost-transparency",
+        "administration": {
+            "path": "Resources/app/administration/src",
+            "entryFilePath": null,
+            "webpack": null
+        },
+        "storefront": {
+            "path": "Resources/app/storefront/src",
+            "entryFilePath": "Resources/app/storefront/src/main.js",
+            "webpack": null,
+            "styleFiles": [
+```
+
+## Shopware Platform Source Code in Dockware
 
 - `/var/www/html/vendor/shopware`
 
@@ -204,13 +233,33 @@ services:
 
 - then "mark directory as" -> "sources root"
 
-### Plugin/Extension Export and Verification
+## Plugin/Extension Export and Verification
+
+- `bin/console bundle:dump`
 
 Last but not least, you can build an exportable zip archive file to upload into a shop backend or Shopware's extension
 marketplace.
 
 There is an optional Shopware CLI that is not included in Dockware. You can get it from
-[sw-cli.fos.gg](https://sw-cli.fos.gg) and use the `extension` command to build a theme file:
+[sw-cli.fos.gg](https://sw-cli.fos.gg) and use the `extension` command.
+
+Use Shopware CLI to build the extension (defaults to remote trunk from Git unless called as below) including administration build:
+
+- `SHOPWARE_PROJECT_ROOT=/var/www/html shopware-cli extension build custom/plugins/IngoSCostTransparency`
+
+and ensure all built assets are installed
+
+- `bin/console assets:install`
+
+---
+
+All together (works in Shopware 6.7)
+
+- `bin/console bundle:dump && SHOPWARE_PROJECT_ROOT=/var/www/html shopware-cli extension build custom/plugins/IngoSCostTransparency && bin/console assets:install && bin/console cache:clear`
+
+---
+
+Use Shopware CLI to build a theme file:
 
 - `shopware-cli extension zip MyTheme`
 
@@ -269,3 +318,33 @@ We can add an alternative host name, like `bs-local.com` in the storefront confi
 ![settings screenshot](storefront-testing-dutch-bs-local.png)
 
 A similar test environment might be available as a one-click installation after uploading the extension for code review.
+
+#### XDEBUG, Symfony Profiler
+
+Install and activate XDEBUG and Symfony Profiler in your project development container if necessary.
+
+#### Vue Dev Tools
+
+Install Vue developer tools in your browser to inspect the Shopware administration UI. If you see the warning that Vue.js is detected on this page, Devtools inspection is not available because it's in production mode or explicitly disabled by the author. Then use the browser DOM inspector instead. Right-click on a custom field input in the product editor → Inspect, and look for a data attribute like data-v- or a class name that hints at the component name.
+
+#### Twig Template Hints
+
+The [FroshDevelopmentHelper plugin](https://github.com/FriendsOfShopware/FroshDevelopmentHelper/) can make Shopware/Symfony emit comments like:
+
+`<!-- TEMPLATE START: "@Storefront/storefront/block/cms-block-image-text.html.twig" -->`
+
+**Don't** install the Frosh (friends of Shopware) development helper on the command line using `composer require` as this breaks the `bin/console` command recipe in Shopware 6.7+. If you already did, rebuild the container using `docker compose down && docker compose up --build`. Alternatively, as the [Git version installation documentation](https://github.com/FriendsOfShopware/FroshDevelopmentHelper/tree/main?tab=readme-ov-file#git-version) shows, we can check out from GitHub and install it with the (officially deprecated) [FroshPluginUploader
+](https://github.com/FriendsOfShopware/FroshPluginUploader) and bin/console plugin manager.
+
+```bash
+cd custom/plugins
+sudo chmod ugo+rw .
+git clone https://github.com/FriendsOfShopware/FroshDevelopmentHelper.git
+curl -L https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/0.3.19/frosh-plugin-upload.phar -o frosh-plugin-uploader.phar
+sudo chmod ugo+x frosh-plugin-uploader.phar
+./frosh-plugin-uploader.phar ext:prepare ./FroshDevelopmentHelper
+cd ../..
+bin/console plugin:refresh
+bin/console plugin:install --activate FroshDevelopmentHelper
+bin/console cache:clear
+```
