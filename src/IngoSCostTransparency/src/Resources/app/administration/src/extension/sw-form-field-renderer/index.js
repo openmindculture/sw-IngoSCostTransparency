@@ -8,16 +8,6 @@ Component.override('sw-form-field-renderer', {
             pluginConfig: null // Start as null to make checks easier
         };
     },
-    async created() {
-        // run once per component not per field to
-        // Fetch all settings for your plugin domain once
-        // FIX: We define 'config' right here as the result of the await
-        const config = await this.systemConfigApiService.getValues('IngoSCostTransparency.config');
-        console.log('API Response:', JSON.parse(JSON.stringify(config)));
-
-        // Save the result to our data property
-        this.pluginConfig = config;
-    },
     computed: {
         bind() { console.log('bind');
             // 1. Get the base properties from the original renderer
@@ -38,24 +28,60 @@ Component.override('sw-form-field-renderer', {
                 // ingos_cost_transparency_percentage_01
                 // ingos.costTransparency.costFactorLabel01
                 const suffix = fieldName.replace('ingos_cost_transparency_percentage_', ''); // e.g., "01"
-// 1. Construct your snippet key
                 const snippetKey = `ingos.costTransparency.costFactorLabel${suffix}`;
+                // Trigger lazy load if not already fetching/fetched
+                if (Object.keys(this.customSnippets).length === 0) {
+                    this.loadCustomSnippets();
+                }
 
+                const dynamicValue = this.customSnippets[snippetKey];
 
-                // 2. Fetch the snippet directly via Vue-i18n
-                const dynamicValue = this.$t(snippetKey);
-                console.log('dynamicValue', dynamicValue);
-                // ingos.costTransparency.costFactorLabel03
-                // this.$t('ingos.costTransparency.costFactorLabel01')
-                // 3. Apply it (Vue returns the key itself if the snippet is missing)
-                if (dynamicValue && dynamicValue !== snippetKey) {
+                if (dynamicValue) {
                     const baseLabel = this.$t(this.config?.label || bind.label);
                     bind.label = `${baseLabel} (${dynamicValue})`;
-                    console.log(`Label updated for ${fieldName}:`, bind.label);
                 }
             }
 
             return bind;
+        },
+        async loadCustomSnippets() {
+            // 1. Guard: If already loading or already have data, stop.
+            if (this.isLoadingSnippets || Object.keys(this.customSnippets).length > 0) {
+                return;
+            }
+
+            this.isLoadingSnippets = true;
+
+            try {
+                // 2. Fetch from the database-backed snippet service
+                // We search for your specific namespace
+                const criteria = {
+                    filter: [
+                        { type: 'contains', field: 'translationKey', value: 'ingos.costTransparency' }
+                    ]
+                };
+
+                const response = await this.snippetSetApiService.getCustomList(1, 100, criteria);
+
+                // 3. Transform the collection into a simple Key -> Value map
+                const mapped = {};
+                if (response && response.data) {
+                    Object.values(response.data).forEach(snippet => {
+                        mapped[snippet.translationKey] = snippet.value;
+                    });
+                }
+
+                // 4. Update state (triggers reactivity in 'computed')
+                this.customSnippets = mapped;
+
+                console.log('Successfully loaded dynamic snippets:', this.customSnippets);
+            } catch (e) {
+                console.error('InSCostTransparency: Snippet API Error', e);
+                // Set to a dummy object so we don't keep retrying on every hover/render
+                this.customSnippets = { _error: true };
+            } finally {
+                this.isLoadingSnippets = false;
+            }
         }
     }
 });
