@@ -90,7 +90,7 @@ You can also use custom CSS to override the default bar chart colors, shadows, a
 
 Consult the [CHANGELOG](CHANGELOG.md) for a full changelog including intermediate releases.
 
-### Storefront Fixup Release 2.0.2, October 2026
+### Storefront Fixup Release 2.0.3, October 2026
 
 The layout broke on mobile devices, when using text zoom, and when descriptions were so long that the users could scroll.
 Missing explicit color configuration could result in an unintentional black-and-white data visualization graph.

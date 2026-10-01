@@ -2,7 +2,7 @@
 
 # IngoSCostTransparency for Shopware 6
 
-## [2.0.2] Storefront Fixup - 2026-10-01
+## [2.0.3] Storefront Fixup - 2026-10-01
 
 ### Fixed
 
