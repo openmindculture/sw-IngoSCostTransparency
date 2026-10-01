@@ -202,3 +202,18 @@ $color-05-default: #eebd57;
 .ingos-cost-style-container {
   display: none;
 }
+
+.offcanvas {
+  &.offcanvas-end.show:has(.ingos-cost-transparency-tab-pane-container) {
+    width: 100%;
+  }
+  .ingos-cost-details .ingos-cost-detail {
+    background-color: transparent;
+  }
+  .ingos-cost-details .ingos-cost-detail.ingos-active {
+    flex-direction: column;
+  }
+  .ingos-cost .ingos-cost-group.ingos-cost-group {
+    position: relative;
+  }
+}
