@@ -249,7 +249,12 @@ in the list of supported Shopware versions, a version that was not known nor rel
 
 The upload is followed by an automated code review request.
 
-This might trigger an additional manual plugin (update) review.
+This might trigger an additional manual plugin (update) review, but usually not when uploading a patch update.
+
+![Version history screenshot](./shopware-extension-version-history.png)
+
+A version history from 1.0.0, an initially approved relased with warnings present, and subsequent updates all extending
+compatibility to the latest Shopware 6.7.x release, even including a rejected upload that failed the code review.
 
 ### Official Testing Environment and Checklist
 
