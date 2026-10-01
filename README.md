@@ -223,6 +223,34 @@ Now we created the file `custom/plugins/dist_tmp/IngoSCostTransparency.zip` whic
 `src/dist_tmp/IngoSCostTransparency.zip` outside the container and could be moved to `dist`:
 - `sudo mv src/dist_tmp/* dist` to commit it in this development repository.
 
+### Extension Partner / Extensions / Upload New Version Form
+
+In the extension details page in your Shopware extension partner account, there is a multi-step form to upload a new plugin file,
+independent of meta information like text description, documentation, images, that you can edit independently.
+
+The upload form asks for a changelog in English, German, and possibly further languages, and asks to specificy the
+compatible Shopware versions in the next step. This should match our composer requirement, for example we state 6.7.x
+
+```
+  "require": {
+    "shopware/core": "~6.7.0",
+    "shopware/storefront": "~6.7.0"
+  }
+```
+
+then we should check that in the form accordingly.
+
+![Screenshot partial upload form: compatible Shopware versions: 6.7](./shopware-extension-upload-version.png)
+
+Even though checking `6.7` adds all currently released 6.7.x versions, this should imply upward compatibility for future
+patch versions of the Shopware platform core. At least that worked in the past after releasing the extension update 2.0.1
+to state Shopware 6.7 compatibility explicitly: when opening the 2.0.1 extension one year later, we can see Shopware 6.7.15.0
+in the list of supported Shopware versions, a version that was not known nor released yet in 2025.
+
+The upload is followed by an automated code review request.
+
+This might trigger an additional manual plugin (update) review.
+
 ### Official Testing Environment and Checklist
 
 Specific validation rules are listed in the official plugin quality guidelines checklist:
