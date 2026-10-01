@@ -90,6 +90,12 @@ You can also use custom CSS to override the default bar chart colors, shadows, a
 
 Consult the [CHANGELOG](CHANGELOG.md) for a full changelog including intermediate releases.
 
+### Storefront Fixup Release 2.0.2, October 2026
+
+The layout broke on mobile devices, when using text zoom, and when descriptions were so long that the users could scroll.
+Missing explicit color configuration could result in an unintentional black-and-white data visualization graph.
+Both issues have been fixed in the 2.0.2 update release in October 2026.
+
 ### Compatibility Release 2.0, July 2025
 
 Shopware dropped support for PHP 7, and Shopware 6.7 switched from Webpack to Vite. The July 2025 compatibility release makes sure that the extension still works with Shopware 6.7 and above.
@@ -167,7 +173,7 @@ or specifcy a specific Docker tag in `docker-compose.yml` e.g.
 ```
 services:
   shopware:
-    image: dockware/dev:6.7.0.1
+    image: dockware/dev:6.7.8.9
 ```
 
 ## Logfile Locations
