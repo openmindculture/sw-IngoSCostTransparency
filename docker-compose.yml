@@ -1,8 +1,7 @@
 services:
   shopware:
     container_name: shopware
-    # image: dockware/dev:latest
-    image: dockware/dev:6.7.0.1
+    image: dockware/dev:latest
     ports:
       - "22:22"     # ssh
       - "80:80"     # apache2

@@ -2,6 +2,13 @@
 
 # IngoSCostTransparency for Shopware 6
 
+## [2.0.2] Storefront Fixup - 2026-10-01
+
+### Fixed
+
+- fix mobile offcanvas layout #12
+- fall backs to default colors #8
+
 ## [2.0.1] Shopware 6.7 Compatibility - 2025-07-22
 
 ### Changed
